@@ -146,7 +146,7 @@
     <main>
         <div class="payment-details">
             <h2>Pay for Your Booking</h2>
-            <div class="amount">Total: ₱9,999</div>
+            <div class="amount">Total: </div>
             <p>Thank you for booking with us! Please complete your payment to confirm your reservation.</p>
         </div>
         <form class="payment-form">
