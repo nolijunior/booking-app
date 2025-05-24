@@ -1,26 +1,37 @@
+<?php
+session_start();
+// var_dump($_SESSION);
+if (!isset($_SESSION['email']) || $_SESSION['email'] !== 'admin@admin.com') {
+  header("Location: /login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Panel - Dashboard</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background: #f1f5f9;
       color: #1e293b;
     }
+
     .admin-container {
       display: flex;
       height: 100vh;
     }
+
     .sidebar {
       width: 260px;
       background: #1e293b;
@@ -29,6 +40,7 @@
       justify-content: space-between;
       padding: 2rem 1rem;
     }
+
     .logo h2 {
       font-size: 1.5rem;
       font-weight: 600;
@@ -36,11 +48,13 @@
       text-align: center;
       margin-bottom: 2rem;
     }
+
     .menu {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
+
     .menu-item {
       display: flex;
       align-items: center;
@@ -52,34 +66,40 @@
       border-radius: 0.5rem;
       transition: background 0.3s ease;
     }
+
     .menu-item:hover,
     .menu-item.active {
       background: #334155;
       color: #ffffff;
     }
+
     .logout {
       margin-top: auto;
       padding-top: 1rem;
       border-top: 1px solid #475569;
     }
+
     .main-content {
       flex: 1;
       padding: 2rem;
       overflow-y: auto;
     }
+
     .welcome {
       text-align: center;
       font-size: 2.5rem;
       font-weight: bold;
       color: #1e293b;
       margin-bottom: 2rem;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
     }
+
     .dashboard-cards {
       display: flex;
       gap: 2rem;
       justify-content: center;
     }
+
     .card {
       flex: 1;
       min-width: 200px;
@@ -90,22 +110,35 @@
       transition: transform 0.3s, box-shadow 0.3s;
       text-align: center;
     }
+
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
+
     .card i {
       font-size: 2rem;
       margin-bottom: 0.5rem;
       display: block;
     }
-    .users-card i { color: #3b82f6; }
-    .bookings-card i { color: #10b981; }
-    .feedbacks-card i { color: #f59e0b; }
+
+    .users-card i {
+      color: #3b82f6;
+    }
+
+    .bookings-card i {
+      color: #10b981;
+    }
+
+    .feedbacks-card i {
+      color: #f59e0b;
+    }
+
     .card h3 {
       font-size: 1rem;
       color: #64748b;
     }
+
     .card .counter {
       font-size: 2rem;
       font-weight: bold;
@@ -114,6 +147,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="admin-container">
     <aside class="sidebar">
@@ -152,4 +186,5 @@
     </main>
   </div>
 </body>
+
 </html>
