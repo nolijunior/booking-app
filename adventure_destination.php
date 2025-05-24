@@ -162,7 +162,7 @@
                     <h3 class="destination-name">Siargao Island</h3>
                     <p class="destination-location">Surigao del Norte</p>
                     <p class="destination-desc">Famous for its surfing spots, rock pools, and island hopping. Siargao is a paradise for thrill-seekers and nature lovers.</p>
-                    <a href="adventure_booking.php?destination=Siargao Island" class="book-now-btn">Book Now</a>
+                    <a href="login.php?destination=Siargao Island" class="book-now-btn">Book Now</a>
                 </div>
             </article>
 
@@ -172,7 +172,7 @@
                     <h3 class="destination-name">Mount Pulag</h3>
                     <p class="destination-location">Benguet</p>
                     <p class="destination-desc">The third highest mountain in the Philippines. Known for its breathtaking "sea of clouds" and challenging trails.</p>
-                    <a href="adventure_booking.php?destination=Mount Pulag" class="book-now-btn">Book Now</a>
+                    <a href="login.php?destination=Mount Pulag" class="book-now-btn">Book Now</a>
                 </div>
             </article>
 
@@ -202,7 +202,7 @@
                     <h3 class="destination-name">Cagayan de Oro</h3>
                     <p class="destination-location">Misamis Oriental</p>
                     <p class="destination-desc">Known as the "City of Golden Friendship" and a hotspot for whitewater rafting and adventure sports.</p>
-                   <a href="adventure_booking.php?destination=Cagayan de Oro" class="book-now-btn">Book Now</a>
+                   <a href="login.php?destination=Cagayan de Oro" class="book-now-btn">Book Now</a>
                 </div>
             </article>
 
@@ -212,7 +212,7 @@
                     <h3 class="destination-name">Sagada</h3>
                     <p class="destination-location">Mountain Province</p>
                     <p class="destination-desc">Famous for its caves, waterfalls, and hanging coffins. A must-visit for explorers and culture enthusiasts.</p>
-                   <a href="adventure_booking.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
+                   <a href="login.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
                 </div>
             </article>
 
@@ -222,7 +222,7 @@
                     <h3 class="destination-name">Donsol</h3>
                     <p class="destination-location">Sorsogon</p>
                     <p class="destination-desc">The best place in the Philippines to swim with whale sharks (Butanding) in their natural habitat.</p>
-                    <a href="adventure_booking.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
+                    <a href="login.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
                 </div>
             </article>
 
@@ -232,7 +232,7 @@
                     <h3 class="destination-name">Mount Apo</h3>
                     <p class="destination-location">Davao</p>
                     <p class="destination-desc">The highest mountain in the Philippines. Offers challenging climbs and diverse ecosystems.</p>
-                   <a href="adventure_booking.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
+                   <a href="login.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
                 </div>
             </article>
         </div>
