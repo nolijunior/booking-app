@@ -124,7 +124,7 @@
             margin-bottom: 1rem;
         }
 
-        .go-to-package-btn {
+        .book-now-btn {
             display: block;
             width: 100%;
             margin: 0 auto 0 0;
@@ -143,7 +143,7 @@
             margin-top: auto;
         }
 
-        .go-to-package-btn:hover {
+        .book-now-btn:hover {
             background: linear-gradient(90deg, #f6b93b, #e67e22);
             transform: translateY(-2px) scale(1.04);
         }
@@ -164,7 +164,7 @@
                     <h3 class="destination-name">Siargao Island</h3>
                     <p class="destination-location">Surigao del Norte</p>
                     <p class="destination-desc">Famous for its surfing spots, rock pools, and island hopping. Siargao is a paradise for thrill-seekers and nature lovers.</p>
-                    <a href="packages.php?destination=Siargao" class="go-to-package-btn">Go to Packages</a>
+                    <a href="adventure_booking.php?destination=Siargao" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 2. Mount Pulag -->
@@ -174,7 +174,7 @@
                     <h3 class="destination-name">Mount Pulag</h3>
                     <p class="destination-location">Benguet</p>
                     <p class="destination-desc">The third highest mountain in the Philippines. Known for its breathtaking "sea of clouds" and challenging trails.</p>
-                    <a href="packages.php?destination=Mount Pulag" class="go-to-package-btn">Go to Packages</a>
+                    <a href="adventure_booking.php?destination=Mount Pulag" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 3. El Nido -->
@@ -184,7 +184,7 @@
                     <h3 class="destination-name">El Nido</h3>
                     <p class="destination-location">Palawan</p>
                     <p class="destination-desc">Renowned for its limestone cliffs, hidden lagoons, and world-class island hopping tours.</p>
-                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
+                    <a href="adventure_booking.php?destination=El Nido" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 4. Batad Rice Terraces -->
@@ -194,7 +194,7 @@
                     <h3 class="destination-name">Batad Rice Terraces</h3>
                     <p class="destination-location">Ifugao</p>
                     <p class="destination-desc">A UNESCO World Heritage Site. Offers challenging hikes and stunning views of ancient rice terraces.</p>
-                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
+                    <a href="adventure_booking.php?destination=Batad Rice Terraces" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 5. Cagayan de Oro -->
@@ -204,7 +204,7 @@
                     <h3 class="destination-name">Cagayan de Oro</h3>
                     <p class="destination-location">Misamis Oriental</p>
                     <p class="destination-desc">Known as the "City of Golden Friendship" and a hotspot for whitewater rafting and adventure sports.</p>
-                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
+                    <a href="adventure_booking.php?destination=Cagayan de oro" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 6. Sagada -->
@@ -214,7 +214,7 @@
                     <h3 class="destination-name">Sagada</h3>
                     <p class="destination-location">Mountain Province</p>
                     <p class="destination-desc">Famous for its caves, waterfalls, and hanging coffins. A must-visit for explorers and culture enthusiasts.</p>
-                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
+                    <a href="adventure_booking.php?destination=Sagada" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 7. Donsol -->
@@ -224,7 +224,7 @@
                     <h3 class="destination-name">Donsol</h3>
                     <p class="destination-location">Sorsogon</p>
                     <p class="destination-desc">The best place in the Philippines to swim with whale sharks (Butanding) in their natural habitat.</p>
-                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
+                    <a href="adventure_booking.php?destination=Donsol" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 8. Mount Apo -->
@@ -234,11 +234,10 @@
                     <h3 class="destination-name">Mount Apo</h3>
                     <p class="destination-location">Davao</p>
                     <p class="destination-desc">The highest mountain in the Philippines. Offers challenging climbs and diverse ecosystems.</p>
-                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
+                    <a href="adventure_booking.php?destination=Mount Apo" class="book-now-btn">Book Now</a>
                 </div>
             </article>
         </div>
-        <!-- Removed the bottom Go to Package button -->
     </main>
 </body>
 

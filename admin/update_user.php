@@ -80,10 +80,6 @@
         <input type="text" id="contact" name="contact" value="" required />
       </div>
       <div class="form-group">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" value="" required />
-      </div>
-      <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" value="" required />
       </div>
