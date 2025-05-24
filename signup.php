@@ -257,6 +257,17 @@ footer {
           />
         </div>
         <div class="form-group">
+          <label for="contact">Contact Number</label>
+          <input
+            type="tel"
+            id="contact"
+            name="contact"
+            placeholder="Enter your contact number (e.g. +639123456789)"
+            required
+            aria-required="true"
+          />
+        </div>
+        <div class="form-group">
           <label for="password">Password</label>
           <input
             type="password"

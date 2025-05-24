@@ -132,16 +132,7 @@
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo">RoamHorizon</a>
-        <nav class="navbar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="packages.html">Packages</a></li>
-                <li><a href="destinations.html">Destinations</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+        <a href="index.php" class="logo">RoamHorizon</a>
     </header>
     <main>
         <div class="payment-details">

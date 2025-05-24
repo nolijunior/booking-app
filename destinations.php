@@ -290,26 +290,19 @@ footer {
     </style>
 </head>
 <body>
-   <header>
+    <header>
         <a href="index.php" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
         <div class="bx bx-menu" id="menu-icon" role="button" aria-label="Toggle menu"></div>
         <nav class="navbar" aria-label="Main navigation">
-            <ul>
-                <li><a href="index.php" aria-current="page">Home</a></li>
-               <li class="dropdown">
-    <span class="dropdown-toggle" tabindex="0">Account <i class='bx bx-chevron-down'></i></span>
-    <ul class="dropdown-menu">
-        <li><a href="login.php">Login</a></li>
-        <li><a href="admin_login.php">Admin</a></li>
+    <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="login.php">Account</a></li>
+        <li><a href="destinations.php" aria-current="page">Destinations</a></li>
+        <li><a href="packages.php">Packages</a></li>
+        <li><a href="about_us.php">About</a></li>
+        <li><a href="contact_us.php">Contact Us</a></li>
     </ul>
-</li>
-
-                <li><a href="packages.php">Packages</a></li>
-                <li><a href="destinations.php">Destination</a></li>
-                <li><a href="about us.php">About</a></li>
-                <li><a href="contact us.php">Contact Us</a></li>
-            </ul>
-        </nav>
+</nav>
     </header>
     <section class="destination-section">
         <h2>Choose Your Experience</h2>
@@ -320,7 +313,7 @@ footer {
                 </div>
                 <h4>Adventure & Exploration</h4>
                 <p>For thrill-seekers and nature lovers, our adventure packages are designed to get your heart racing and your spirit soaring.</p>
-                <button class="see-dest-btn" onclick="window.location.href='adventure-destination.php?type=adventure'">See Destinations</button>
+                <button class="see-dest-btn" onclick="window.location.href='adventure_destination.php?type=adventure'">See Destinations</button>
             </article>
             <article class="container-box">
                 <div class="container-img">
@@ -328,7 +321,7 @@ footer {
                 </div>
                 <h4>Romance & Honeymoon</h4>
                 <p>Celebrate love with our specially curated romantic getaways.</p><br><br>
-                <button class="see-dest-btn" onclick="window.location.href='romance-destination.php?type=romance'">See Destinations</button>
+                <button class="see-dest-btn" onclick="window.location.href='romance_destination.php?type=romance'">See Destinations</button>
             </article>
             <article class="container-box">
                 <div class="container-img">
@@ -336,7 +329,7 @@ footer {
                 </div>
                 <h4>Family Fun & Relaxation</h4>
                 <p>Create lasting memories with family-friendly vacations that cater to all ages.</p><br><br>
-                <button class="see-dest-btn" onclick="window.location.href='family-destination.php?type=family'">See Destinations</button>
+                <button class="see-dest-btn" onclick="window.location.href='family_destination.php?type=family'">See Destinations</button>
             </article>
             <article class="container-box">
                 <div class="container-img">
@@ -344,7 +337,7 @@ footer {
                 </div>
                 <h4>Cultural & Historical Journeys</h4>
                 <p>Immerse yourself in the rich tapestry of global cultures with our heritage-focused travel packages.</p>
-                <button class="see-dest-btn" onclick="window.location.href='cultural-destination.php?type=cultural'">See Destinations</button>
+                <button class="see-dest-btn" onclick="window.location.href='cultural_destination.php?type=cultural'">See Destinations</button>
             </article>
             <article class="container-box">
                 <div class="container-img">
@@ -352,7 +345,7 @@ footer {
                 </div>
                 <h4>Corporate & Group Travel</h4>
                 <p>Simplify your business trips and group travel with RoamHorizon’s corporate solutions.</p>
-                <button class="see-dest-btn" onclick="window.location.href='corporate-destination.php?type=corporate'">See Destinations</button>
+                <button class="see-dest-btn" onclick="window.location.href='corporate_destination.php?type=corporate'">See Destinations</button>
             </article>
         </div>
     </section>
@@ -413,27 +406,5 @@ footer {
     </footer>
     <!-- Bootstrap 5 JS (for responsiveness, optional) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Dropdown JS (at end of body) -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-
-        // Always hide dropdown on page load
-        dropdownMenu.style.display = 'none';
-
-        dropdownToggle.addEventListener('click', function(event) {
-            event.stopPropagation();
-            dropdownMenu.style.display = dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                dropdownMenu.style.display = 'none';
-            }
-        });
-    });
-    </script>
 </body>
 </html>

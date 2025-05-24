@@ -92,64 +92,6 @@ header {
 }
 #menu-icon { display: none; }
 
-/* Dropdown Styles */
-        .navbar ul li.dropdown {
-            position: relative;
-        }
-        .dropdown-toggle {
-            cursor: pointer;
-            color: #34495e;
-            font-weight: 600;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.3s;
-            padding: 0.5rem 0;
-            user-select: none;
-        }
-        .dropdown-toggle:hover {
-            color: #e67e22;
-        }
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 2.2rem;
-            left: 0;
-            min-width: 140px;
-            background: rgba(255, 255, 255, 0.98);
-            border-radius: 0.7rem;
-            box-shadow: 0 8px 32px rgba(44,62,80,0.1);
-            z-index: 1002;
-            flex-direction: column;
-            padding: 0.5rem 0;
-            animation: fadeInDropdown 0.35s cubic-bezier(.39,.575,.565,1) both;
-        }
-        .dropdown-menu li {
-            width: 100%;
-        }
-        .dropdown-menu li a {
-            display: block;
-            width: 100%;
-            padding: 0.7rem 1.2rem;
-            color: #34495e;
-            background: none;
-            border: none;
-            text-align: left;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: background 0.2s, color 0.2s;
-            border-radius: 0.5rem;
-        }
-        .dropdown-menu li a:hover {
-            background: #f6f6f6;
-            color: #e67e22;
-        }
-        @keyframes fadeInDropdown {
-            0% { opacity: 0; transform: translateY(-10px);}
-            100% { opacity: 1; transform: translateY(0);}
-        }
         .package {
             max-width: 1140px;
             margin: 4rem auto 3rem;
@@ -314,21 +256,15 @@ header {
         <a href="index.php" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
         <div class="bx bx-menu" id="menu-icon" role="button" aria-label="Toggle menu"></div>
         <nav class="navbar" aria-label="Main navigation">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li class="dropdown">
-    <span class="dropdown-toggle" tabindex="0">Account <i class='bx bx-chevron-down'></i></span>
-    <ul class="dropdown-menu">
-        <li><a href="login.php">Login</a></li>
-        <li><a href="admin_login.php">Admin</a></li>
+    <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="login.php">Account</a></li>
+        <li><a href="destinations.php">Destinations</a></li>
+        <li><a href="packages.php" aria-current="page">Packages</a></li>
+        <li><a href="about_us.php">About</a></li>
+        <li><a href="contact_us.php">Contact Us</a></li>
     </ul>
-</li>
-                <li><a href="packages.php" aria-current="page">Package</a></li>
-                <li><a href="destinations.php">Destination</a></li>
-                <li><a href="about us.php">About</a></li>
-                <li><a href="contact us.php">Contact Us</a></li>
-            </ul>
-        </nav>
+</nav>
     </header>
     <section class="package" id="package" aria-labelledby="services-title">
         <div class="text">
@@ -481,28 +417,6 @@ header {
     // For testing: run this in browser console to simulate login:
     // localStorage.setItem('isLoggedIn', 'true');
     // localStorage.removeItem('isLoggedIn');
-    </script>
-<!-- Dropdown JS (at end of body) -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
-
-        // Always hide dropdown on page load
-        dropdownMenu.style.display = 'none';
-
-        dropdownToggle.addEventListener('click', function(event) {
-            event.stopPropagation();
-            dropdownMenu.style.display = dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                dropdownMenu.style.display = 'none';
-            }
-        });
-    });
     </script>
 </body>
 </html>

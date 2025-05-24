@@ -495,25 +495,19 @@ footer {
 <body>
 
     <!-- Header -->
-    <header>
+     <header>
         <a href="index.php" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
         <div class="bx bx-menu" id="menu-icon" role="button" aria-label="Toggle menu"></div>
         <nav class="navbar" aria-label="Main navigation">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li class="dropdown">
-    <span class="dropdown-toggle" tabindex="0">Account <i class='bx bx-chevron-down'></i></span>
-    <ul class="dropdown-menu">
-        <li><a href="login.php">Login</a></li>
-        <li><a href="admin_login.php">Admin</a></li>
+    <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="login.php">Account</a></li>
+        <li><a href="destinations.php">Destinations</a></li>
+        <li><a href="packages.php">Packages</a></li>
+        <li><a href="about_us.php">About</a></li>
+        <li><a href="contact_us.php" aria-current="page">Contact Us</a></li>
     </ul>
-</li>
-                <li><a href="packages.php">Package</a></li>
-                <li><a href="destinations.hphp">Destination</a></li>
-                 <li><a href="about us.php">About</a></li>
-                <li><a href="contact us.php" aria-current="page">Contact Us</a></li>
-            </ul>
-        </nav>
+</nav>
     </header>
 
     <!-- Contact Info Section -->
@@ -562,39 +556,43 @@ footer {
 </section>
 
 <!-- FAQ Section -->
-<section class="faq" aria-labelledby="faq-title" style="max-width:1140px; margin:3rem auto 5rem; padding:0 1.5rem;">
-  <h2 id="faq-title" style="font-family: 'Paytone One', sans-serif; font-size: 2.5rem; color: #2c3e50; margin-bottom: 2rem; text-align:center;">
-    Frequently Asked Questions
-  </h2>
-  <dl style="max-width:800px; margin:0 auto; font-size:1rem; color:#34495e;">
-    <dt style="font-weight:600; margin-bottom:0.5rem;">How do I book a travel package?</dt>
-    <dd style="margin-bottom:1.5rem;">You can book by creating an account and selecting your preferred package on our website or contacting our support team directly.</dd>
-
-    <dt style="font-weight:600; margin-bottom:0.5rem;">What payment methods do you accept?</dt>
-    <dd style="margin-bottom:1.5rem;">We accept credit/debit cards, bank transfers, and popular e-wallets for your convenience.</dd>
-
-    <dt style="font-weight:600; margin-bottom:0.5rem;">Can I customize my travel itinerary?</dt>
-    <dd style="margin-bottom:1.5rem;">Yes! We offer personalized travel planning to tailor your experience to your preferences.</dd>
-
-    <dt style="font-weight:600; margin-bottom:0.5rem;">What is your cancellation policy?</dt>
-    <dd style="margin-bottom:1.5rem;">Cancellations made within 7 days of the trip date may be subject to fees. Please refer to our Terms & Conditions for details.</dd>
-  </dl>
+<section class="faq" aria-labelledby="faq-title" style="max-width: 1140px; margin: 3rem auto 5rem auto;">
+    <h2 id="faq-title" style="font-family: 'Paytone One', sans-serif; font-size: 2.2rem; color: #b3b3b3; margin-bottom: 2rem; text-align: center; letter-spacing: 1px;">
+        Frequently Asked Questions
+    </h2>
+    <dl style="color: #bbbbbb; font-size: 1.08rem; line-height: 1.7;">
+        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
+            How do I book a tour with RoamHorizon?
+        </dt>
+        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
+            You can book a tour by browsing our Packages page and clicking the "Book Now" button on your chosen package. Fill out the booking form and our team will contact you for confirmation.
+        </dd>
+        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
+            What payment methods do you accept?
+        </dt>
+        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
+            We accept bank transfers, GCash, and selected credit/debit cards. Details will be provided once your booking is confirmed.
+        </dd>
+        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
+            Can I customize my travel package?
+        </dt>
+        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
+            Yes! We offer customizable travel experiences. Contact us with your preferences and we’ll create a personalized itinerary for you.
+        </dd>
+        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
+            What is your cancellation policy?
+        </dt>
+        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
+            Cancellations made 7 days before the scheduled trip are eligible for a full refund. Later cancellations may incur charges. Please see our Terms & Conditions for full details.
+        </dd>
+        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
+            How can I contact customer support?
+        </dt>
+        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
+            You may call us at +63 992 473 0763 or email info@roamhorizon.com. Our team is available Monday to Saturday to assist you.
+        </dd>
+    </dl>
 </section>
-
-
-    <!-- Newsletter Section -->
-    <section class="newsletter" aria-labelledby="newsletter-title">
-        <div class="news-text">
-            <h2 id="newsletter-title">Newsletter</h2>
-            <p>Subscribe to our newsletter <br> for travel inspiration, exclusive offers, and insider tips</p>
-        </div>
-        <div class="send">
-            <div class="newsletter-form">
-                <input type="email" placeholder="Write your email" aria-label="Email address" required>
-                <button type="button" aria-label="Subscribe to newsletter">Submit</button>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer id="contact" aria-labelledby="footer-title">
