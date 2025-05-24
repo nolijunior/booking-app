@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,9 +14,10 @@
             margin: 0;
             padding: 0;
         }
+
         header {
             background: #fff;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
@@ -24,61 +26,77 @@
             top: 0;
             z-index: 100;
         }
+
         .logo {
             font-size: 1.8rem;
             color: #2c3e50;
             text-decoration: none;
             font-weight: 700;
         }
-        .logo:hover { color: #e67e22; }
+
+        .logo:hover {
+            color: #e67e22;
+        }
+
         .navbar ul {
             list-style: none;
             display: flex;
             gap: 1.5rem;
         }
+
         .navbar ul li a {
             color: #34495e;
             font-weight: 600;
             text-decoration: none;
         }
-        .navbar ul li a:hover { color: #e67e22; }
+
+        .navbar ul li a:hover {
+            color: #e67e22;
+        }
+
         main {
             max-width: 1000px;
             margin: 2rem auto;
             padding: 0 1.5rem;
         }
+
         .destinations-title {
             font-size: 2rem;
             color: #2c3e50;
             text-align: center;
             margin-bottom: 2rem;
         }
+
         .destinations-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 2rem;
             margin-bottom: 3rem;
         }
+
         .destination-card {
             background: #fff;
             border-radius: 1rem;
-            box-shadow: 0 8px 24px rgba(230,126,34,0.08);
+            box-shadow: 0 8px 24px rgba(230, 126, 34, 0.08);
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
             height: 100%;
         }
+
         .destination-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 16px 32px rgba(230,126,34,0.15);
+            box-shadow: 0 16px 32px rgba(230, 126, 34, 0.15);
         }
+
         .destination-img {
             width: 100%;
             height: 180px;
             object-fit: cover;
             border-radius: 1rem 1rem 0 0;
         }
+
         .destination-content {
             padding: 1.5rem;
             flex: 1 1 auto;
@@ -86,22 +104,26 @@
             flex-direction: column;
             justify-content: flex-start;
         }
+
         .destination-name {
             font-size: 1.4rem;
             color: #2c3e50;
             margin-top: 0;
             margin-bottom: 0.75rem;
         }
+
         .destination-location {
             color: #7f8c8d;
             font-weight: 500;
             margin-bottom: 0.5rem;
         }
+
         .destination-desc {
             color: #555f6e;
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
+
         .go-to-package-btn {
             display: block;
             width: 100%;
@@ -115,17 +137,19 @@
             border-radius: 2rem;
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(230,126,34,0.13);
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.13);
             text-decoration: none;
             text-align: center;
             margin-top: auto;
         }
+
         .go-to-package-btn:hover {
             background: linear-gradient(90deg, #f6b93b, #e67e22);
             transform: translateY(-2px) scale(1.04);
         }
     </style>
 </head>
+
 <body>
     <header>
         <a href="destinations.php" class="logo">RoamHorizon</a>
@@ -140,7 +164,7 @@
                     <h3 class="destination-name">Siargao Island</h3>
                     <p class="destination-location">Surigao del Norte</p>
                     <p class="destination-desc">Famous for its surfing spots, rock pools, and island hopping. Siargao is a paradise for thrill-seekers and nature lovers.</p>
-                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
+                    <a href="packages.php?destination=Siargao" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 2. Mount Pulag -->
@@ -150,7 +174,7 @@
                     <h3 class="destination-name">Mount Pulag</h3>
                     <p class="destination-location">Benguet</p>
                     <p class="destination-desc">The third highest mountain in the Philippines. Known for its breathtaking "sea of clouds" and challenging trails.</p>
-                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
+                    <a href="packages.php?destination=Mount Pulag" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 3. El Nido -->
@@ -217,4 +241,5 @@
         <!-- Removed the bottom Go to Package button -->
     </main>
 </body>
+
 </html>
