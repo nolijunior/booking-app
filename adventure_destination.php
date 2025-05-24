@@ -65,6 +65,9 @@
             box-shadow: 0 8px 24px rgba(230,126,34,0.08);
             overflow: hidden;
             transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
         .destination-card:hover {
             transform: translateY(-6px);
@@ -78,6 +81,10 @@
         }
         .destination-content {
             padding: 1.5rem;
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
         .destination-name {
             font-size: 1.4rem;
@@ -97,13 +104,13 @@
         }
         .go-to-package-btn {
             display: block;
-            width: max-content;
-            margin: 0 auto 3rem;
+            width: 100%;
+            margin: 0 auto 0 0;
             background: linear-gradient(90deg, #e67e22, #f6b93b);
             color: #fff;
             border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            font-size: 1.05rem;
             font-weight: 600;
             border-radius: 2rem;
             cursor: pointer;
@@ -111,6 +118,7 @@
             box-shadow: 0 4px 15px rgba(230,126,34,0.13);
             text-decoration: none;
             text-align: center;
+            margin-top: auto;
         }
         .go-to-package-btn:hover {
             background: linear-gradient(90deg, #f6b93b, #e67e22);
@@ -127,56 +135,62 @@
         <div class="destinations-grid">
             <!-- 1. Siargao -->
             <article class="destination-card">
-                <img src="img/siargao.jpg" alt="Siargao Island" class="destination-img">
+                <img src="destinations/siargao.jpg" alt="Siargao Island" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Siargao Island</h3>
                     <p class="destination-location">Surigao del Norte</p>
                     <p class="destination-desc">Famous for its surfing spots, rock pools, and island hopping. Siargao is a paradise for thrill-seekers and nature lovers.</p>
+                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 2. Mount Pulag -->
             <article class="destination-card">
-                <img src="img/mount-pulag.jpg" alt="Mount Pulag" class="destination-img">
+                <img src="destinations/pulag.jpg" alt="Mount Pulag" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Mount Pulag</h3>
                     <p class="destination-location">Benguet</p>
                     <p class="destination-desc">The third highest mountain in the Philippines. Known for its breathtaking "sea of clouds" and challenging trails.</p>
+                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 3. El Nido -->
             <article class="destination-card">
-                <img src="img/el-nido.jpg" alt="El Nido" class="destination-img">
+                <img src="destinations/elnido.jpg" alt="El Nido" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">El Nido</h3>
                     <p class="destination-location">Palawan</p>
                     <p class="destination-desc">Renowned for its limestone cliffs, hidden lagoons, and world-class island hopping tours.</p>
+                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 4. Batad Rice Terraces -->
             <article class="destination-card">
-                <img src="img/batad.jpg" alt="Batad Rice Terraces" class="destination-img">
+                <img src="destinations/batad.jpg" alt="Batad Rice Terraces" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Batad Rice Terraces</h3>
                     <p class="destination-location">Ifugao</p>
                     <p class="destination-desc">A UNESCO World Heritage Site. Offers challenging hikes and stunning views of ancient rice terraces.</p>
+                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 5. Cagayan de Oro -->
             <article class="destination-card">
-                <img src="img/cdo.jpg" alt="Cagayan de Oro" class="destination-img">
+                <img src="destinations/cagayan.jpg" alt="Cagayan de Oro" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Cagayan de Oro</h3>
                     <p class="destination-location">Misamis Oriental</p>
                     <p class="destination-desc">Known as the "City of Golden Friendship" and a hotspot for whitewater rafting and adventure sports.</p>
+                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 6. Sagada -->
             <article class="destination-card">
-                <img src="img/sagada.jpg" alt="Sagada" class="destination-img">
+                <img src="destinations/sagada.jpg" alt="Sagada" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Sagada</h3>
                     <p class="destination-location">Mountain Province</p>
                     <p class="destination-desc">Famous for its caves, waterfalls, and hanging coffins. A must-visit for explorers and culture enthusiasts.</p>
+                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 7. Donsol -->
@@ -186,6 +200,7 @@
                     <h3 class="destination-name">Donsol</h3>
                     <p class="destination-location">Sorsogon</p>
                     <p class="destination-desc">The best place in the Philippines to swim with whale sharks (Butanding) in their natural habitat.</p>
+                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
             <!-- 8. Mount Apo -->
@@ -195,10 +210,11 @@
                     <h3 class="destination-name">Mount Apo</h3>
                     <p class="destination-location">Davao</p>
                     <p class="destination-desc">The highest mountain in the Philippines. Offers challenging climbs and diverse ecosystems.</p>
+                    <a href="packages.php" class="go-to-package-btn">Go to Packages</a>
                 </div>
             </article>
         </div>
-        <a href="packages.php" class="go-to-package-btn">Go to Package</a>
+        <!-- Removed the bottom Go to Package button -->
     </main>
 </body>
 </html>
