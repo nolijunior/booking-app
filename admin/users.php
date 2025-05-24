@@ -160,14 +160,14 @@
       require_once("../config/db.php");
 
       // Fetch users from the database
-      $sql = "SELECT * FROM users";
+      $sql = "SELECT * FROM users WHERE user_id != 1";
       $result = $conn->query($sql);
       // var_dump($result);
       ?>
       <table>
         <thead>
           <tr>
-            <th>Id</th>
+            <!-- <th>row</th> -->
             <th>Full Name</th>
             <th>Email</th>
             <th>Contact Number</th>
@@ -178,13 +178,12 @@
           <?php if ($result && $result->num_rows > 0): ?>
             <?php while ($row = $result->fetch_assoc()): ?>
               <tr>
-                <td><?= htmlspecialchars($row['user_id']) ?></td>
                 <td><?= htmlspecialchars($row['full_name']) ?></td>
                 <td><?= htmlspecialchars($row['email']) ?></td>
                 <td><?= htmlspecialchars($row['contact_number']) ?></td>
                 <td>
                   <!-- Add your update/delete buttons here -->
-                  <a href="edit_user.php?id=<?= $row['user_id'] ?>"><button style="padding: 0.3rem 0.75rem; background-color: #f59e0b; color: white; border: none; border-radius: 0.375rem; margin-right: 0.25rem;">Update</button></a>
+                  <a href="update_user.php?id=<?= $row['user_id'] ?>"><button style="padding: 0.3rem 0.75rem; background-color: #f59e0b; color: white; border: none; border-radius: 0.375rem; margin-right: 0.25rem;">Update</button></a>
                   <a href="delete_user.php?id=<?= $row['user_id'] ?>" onclick="return confirm('Are you sure you want to delete this user?');"><button style="padding: 0.3rem 0.75rem; background-color: #ef4444; color: white; border: none; border-radius: 0.375rem;">Delete</button></a>
                 </td>
               </tr>
