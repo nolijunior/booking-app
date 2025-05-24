@@ -256,7 +256,7 @@
     </div>
      <div class="form-group">
       <label for="destination">Destination</label>
-        <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
+        <input type="text" id="destination" name="destination" value="" disabled>
     </div>
     <div class="form-group">
         <label for="date">Preferred Travel Date</label>

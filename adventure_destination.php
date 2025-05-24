@@ -127,7 +127,6 @@
         .book-now-btn {
             display: block;
             width: 100%;
-            margin: 0 auto 0 0;
             background: linear-gradient(90deg, #e67e22, #f6b93b);
             color: #fff;
             border: none;
@@ -157,17 +156,16 @@
     <main>
         <h1 class="destinations-title">Adventure & Exploration Destinations</h1>
         <div class="destinations-grid">
-            <!-- 1. Siargao -->
             <article class="destination-card">
                 <img src="destinations/siargao.jpg" alt="Siargao Island" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Siargao Island</h3>
                     <p class="destination-location">Surigao del Norte</p>
                     <p class="destination-desc">Famous for its surfing spots, rock pools, and island hopping. Siargao is a paradise for thrill-seekers and nature lovers.</p>
-                    <a href="adventure_booking.php?destination=Siargao" class="book-now-btn">Book Now</a>
+                    <a href="adventure_booking.php?destination=Siargao Island" class="book-now-btn">Book Now</a>
                 </div>
             </article>
-            <!-- 2. Mount Pulag -->
+
             <article class="destination-card">
                 <img src="destinations/pulag.jpg" alt="Mount Pulag" class="destination-img">
                 <div class="destination-content">
@@ -177,64 +175,64 @@
                     <a href="adventure_booking.php?destination=Mount Pulag" class="book-now-btn">Book Now</a>
                 </div>
             </article>
-            <!-- 3. El Nido -->
+
             <article class="destination-card">
                 <img src="destinations/elnido.jpg" alt="El Nido" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">El Nido</h3>
                     <p class="destination-location">Palawan</p>
                     <p class="destination-desc">Renowned for its limestone cliffs, hidden lagoons, and world-class island hopping tours.</p>
-                    <a href="adventure_booking.php?destination=El Nido" class="book-now-btn">Book Now</a>
+                   <a href="adventure_booking.php?destination=El Nido" class="book-now-btn">Book Now</a>
                 </div>
             </article>
-            <!-- 4. Batad Rice Terraces -->
+
             <article class="destination-card">
                 <img src="destinations/batad.jpg" alt="Batad Rice Terraces" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Batad Rice Terraces</h3>
                     <p class="destination-location">Ifugao</p>
                     <p class="destination-desc">A UNESCO World Heritage Site. Offers challenging hikes and stunning views of ancient rice terraces.</p>
-                    <a href="adventure_booking.php?destination=Batad Rice Terraces" class="book-now-btn">Book Now</a>
+                   <a href="adventure_booking.php?destination=Batad Rice Terraces" class="book-now-btn">Book Now</a>
                 </div>
             </article>
-            <!-- 5. Cagayan de Oro -->
+
             <article class="destination-card">
                 <img src="destinations/cagayan.jpg" alt="Cagayan de Oro" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Cagayan de Oro</h3>
                     <p class="destination-location">Misamis Oriental</p>
                     <p class="destination-desc">Known as the "City of Golden Friendship" and a hotspot for whitewater rafting and adventure sports.</p>
-                    <a href="adventure_booking.php?destination=Cagayan de oro" class="book-now-btn">Book Now</a>
+                   <a href="adventure_booking.php?destination=Cagayan de Oro" class="book-now-btn">Book Now</a>
                 </div>
             </article>
-            <!-- 6. Sagada -->
+
             <article class="destination-card">
                 <img src="destinations/sagada.jpg" alt="Sagada" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Sagada</h3>
                     <p class="destination-location">Mountain Province</p>
                     <p class="destination-desc">Famous for its caves, waterfalls, and hanging coffins. A must-visit for explorers and culture enthusiasts.</p>
-                    <a href="adventure_booking.php?destination=Sagada" class="book-now-btn">Book Now</a>
+                   <a href="adventure_booking.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
                 </div>
             </article>
-            <!-- 7. Donsol -->
+
             <article class="destination-card">
                 <img src="img/donsol.jpg" alt="Donsol" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Donsol</h3>
                     <p class="destination-location">Sorsogon</p>
                     <p class="destination-desc">The best place in the Philippines to swim with whale sharks (Butanding) in their natural habitat.</p>
-                    <a href="adventure_booking.php?destination=Donsol" class="book-now-btn">Book Now</a>
+                    <a href="adventure_booking.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
                 </div>
             </article>
-            <!-- 8. Mount Apo -->
+
             <article class="destination-card">
                 <img src="img/mount-apo.jpg" alt="Mount Apo" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Mount Apo</h3>
                     <p class="destination-location">Davao</p>
                     <p class="destination-desc">The highest mountain in the Philippines. Offers challenging climbs and diverse ecosystems.</p>
-                    <a href="adventure_booking.php?destination=Mount Apo" class="book-now-btn">Book Now</a>
+                   <a href="adventure_booking.php?destination=Mountain Province" class="book-now-btn">Book Now</a>
                 </div>
             </article>
         </div>
