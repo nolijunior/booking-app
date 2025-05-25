@@ -1,10 +1,4 @@
-<?php
-session_start();
-// var_dump($_SESSION);
-if (!isset($_SESSION['email']) || $_SESSION['email'] !== 'admin@admin.com') {
-  header("Location: /login.php");
-}
-?>
+<?php require_once '../includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
