@@ -1,7 +1,50 @@
 <?php
-// Check for feedback messages
-$status = isset($_GET['status']) ? $_GET['status'] : '';
-$message = isset($_GET['message']) ? htmlspecialchars($_GET['message']) : '';
+require_once("config/db.php");
+
+// Check if the form was submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize and validate inputs
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
+
+    // Basic validation
+    if (empty($name) || empty($email) || empty($message)) {
+        $error = "All fields are required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid email format.";
+    } else {
+        // Check if table exists
+        $result = $conn->query("SHOW TABLES LIKE 'feedbacks'");
+        if ($result->num_rows == 0) {
+            $error = "Feedbacks table does not exist in the database.";
+        } else {
+            // Prepare and execute the SQL statement
+            $stmt = $conn->prepare("INSERT INTO feedbacks (full_name, email, message) VALUES (?, ?, ?)");
+            if ($stmt === false) {
+                $error = "Failed to prepare statement: " . $conn->error;
+            } else {
+                $stmt->bind_param("sss", $name, $email, $message);
+                if ($stmt->execute()) {
+                    $success = "Thank you for your message! We'll get back to you soon.";
+                } else {
+                    $error = "Error inserting data: " . $stmt->error;
+                }
+                if (isset($success)) {
+                    //var_dump($success);
+                    echo "<script>
+    alert(" . json_encode($success) . ");
+</script>";
+                }
+                
+                $stmt->close();
+            }
+        }
+    }
+}
+
+// Close the database connection
+$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -540,12 +583,7 @@ footer {
   <h2 id="contact-form-title" style="font-family: 'Paytone One', sans-serif; font-size: 2.5rem; color: #2c3e50; margin-bottom: 1.5rem; text-align:center;">
     Send Us a Message
   </h2>
-  <?php if (!empty($message)): ?>
-    <div class="feedback-message <?php echo $status; ?>">
-      <?php echo $message; ?>
-    </div>
-  <?php endif; ?>
-  <form action="admin/feedback.php" method="POST" style="display:flex; flex-direction:column; gap:1.25rem;">
+  <form action="" method="POST" style="display:flex; flex-direction:column; gap:1.25rem;">
     <input type="text" name="name" placeholder="Your Full Name" aria-label="Full Name" required style="padding:0.75rem 1rem; border-radius:0.75rem; border:1px solid #ddd; font-size:1rem;"/>
     <input type="email" name="email" placeholder="Your Email Address" aria-label="Email Address" required style="padding:0.75rem 1rem; border-radius:0.75rem; border:1px solid #ddd; font-size:1rem;"/>
     <textarea name="message" rows="5" placeholder="Your Message" aria-label="Message" required style="padding:0.75rem 1rem; border-radius:0.75rem; border:1px solid #ddd; font-size:1rem;"></textarea>
