@@ -214,6 +214,41 @@ header {
   display: block;
   border-radius: 1.5rem;
 }
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.85);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 80vh;
+  border-radius: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  color: #f1f1f1;
+  font-size: 35px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.close:hover,
+.close:focus {
+  color: #e67e22;
+}
 .about-content {
   flex: 1 1 500px;
   text-align: left;
@@ -294,15 +329,21 @@ footer {
 }
 .list ul li a:hover, .list ul li a:focus { color: #e67e22; }
 .social a {
-  font-size: 1.6rem;
-  margin-right: 1.2rem;
-  color: #34495e;
-  transition: color 0.3s, transform 0.3s;
-}
-.social a:hover, .social a:focus {
-  color: #e67e22;
-  transform: scale(1.15);
-}
+            font-size: 1.6rem;
+            margin-right: 1.2rem;
+            color: #34495e;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social a:hover {
+            color: #e67e22;
+            transform: scale(1.15);
+        }
+        .social img {
+            width: 1.6rem;
+            height: 1.6rem;
+            margin-right: 1.2rem;
+            vertical-align: middle;
+        }
 .end-text {
   text-align: center;
   font-weight: 300;
@@ -340,7 +381,6 @@ footer {
         <li><a href="index.php">Home</a></li>
         <li><a href="login.php">Account</a></li>
         <li><a href="destinations.php">Destinations</a></li>
-        <li><a href="packages.php">Packages</a></li>
         <li><a href="about_us.php" aria-current="page">About</a></li>
         <li><a href="contact_us.php">Contact Us</a></li>
     </ul>
@@ -355,8 +395,15 @@ footer {
         </div>
         <div class="about-container">
             <div class="about-image">
-                <img src="img/rht.jpg" alt="RoamHorizon travel scene">
-            </div>
+    <img src="img/rht.jpg" alt="RoamHorizon travel scene" id="aboutThumb">
+</div>
+
+<!-- Modal Image Popup -->
+<div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="fullImage">
+</div>
+
             <div class="about-content">
                 <h2>Your Trusted Travel Partner</h2>
                 <p>We offer tailor-made itineraries, exclusive guided tours, and seamless travel planning. Whether you're looking for a romantic getaway, a family vacation, a solo adventure, or a corporate retreat, we ensure every detail is taken care of so you can focus on making memories.</p>
@@ -372,18 +419,18 @@ footer {
         </div>
     </section>
 
-    <!-- Footer -->
+   <!-- Footer -->
     <footer id="contact" aria-labelledby="footer-title">
         <div class="footer">
             <div class="main">
                 <div class="list">
                     <h4 id="footer-title">Quick Links</h4>
                     <ul>
-                        <li><a href="about us.php" target="_blank" rel="noopener noreferrer">About Us</a></a></li>
-                        <li><a href="terms-conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
-                        <li><a href="privacypolicy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-                        <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></a></li>
-                        <li><a href="packages.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
+                        <li><a href="about_us.php" target="_blank" rel="noopener noreferrer">About Us</a></li>
+                        <li><a href="terms_conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
+                        <li><a href="privacy_policy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                        <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></li>
+                        <li><a href="destinations.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
                     </ul>
                 </div>
                 <div class="list">
@@ -405,21 +452,20 @@ footer {
                 </div>
                 <div class="list">
                     <h4>Connect</h4>
-                   <div class="social">
-    <a href="https://www.facebook.com/share/1AjQnK2rp9/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-        <img src="img/logo-facebook.svg" alt="Facebook" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="Instagram">
-        <img src="img/logo-instagram.svg" alt="Instagram" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="Twitter">
-        <img src="img/logo-twitter.svg" alt="Twitter" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="LinkedIn">
-        <img src="img/logo-linkedin.svg" alt="LinkedIn" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-</div>
-
+                    <div class="social">
+                        <a href="https://www.facebook.com/share/1AjQnK2rp9/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <img src="img/logo-facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <img src="img/logo-instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <img src="img/logo-twitter.svg" alt="Twitter">
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <img src="img/logo-linkedin.svg" alt="LinkedIn">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -427,27 +473,31 @@ footer {
             <p>RoamHorizon Travels <br> Copyright @2024 All Rights Reserved</p>
         </div>
     </footer>
-    <!-- Dropdown JS (at end of body) -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
+  // Get elements
+  const modal = document.getElementById("imageModal");
+  const thumb = document.getElementById("aboutThumb");
+  const fullImage = document.getElementById("fullImage");
+  const closeBtn = document.getElementsByClassName("close")[0];
 
-        // Always hide dropdown on page load
-        dropdownMenu.style.display = 'none';
+  // Open modal on image click
+  thumb.onclick = function() {
+    modal.style.display = "block";
+    fullImage.src = this.src;
+  }
 
-        dropdownToggle.addEventListener('click', function(event) {
-            event.stopPropagation();
-            dropdownMenu.style.display = dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
+  // Close modal on (x) click
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                dropdownMenu.style.display = 'none';
-            }
-        });
-    });
-    </script>
+  // Close modal on outside click
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
 </body>
 </html>

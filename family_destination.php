@@ -95,24 +95,25 @@
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
-        .go-to-package-btn {
+        .book-now-btn {
             display: block;
-            width: max-content;
-            margin: 0 auto 3rem;
+            width: 100%;
             background: linear-gradient(90deg, #e67e22, #f6b93b);
             color: #fff;
             border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            font-size: 1.05rem;
             font-weight: 600;
             border-radius: 2rem;
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(230,126,34,0.13);
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.13);
             text-decoration: none;
             text-align: center;
+            margin-top: auto;
         }
-        .go-to-package-btn:hover {
+
+        .book-now-btn:hover {
             background: linear-gradient(90deg, #f6b93b, #e67e22);
             transform: translateY(-2px) scale(1.04);
         }
@@ -127,78 +128,85 @@
         <div class="destinations-grid">
             <!-- 1. Boracay -->
             <article class="destination-card">
-                <img src="img/boracay.jpg" alt="Boracay" class="destination-img">
+                <img src="destinations/boracay.jpg" alt="Boracay" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Boracay</h3>
                     <p class="destination-location">Aklan</p>
                     <p class="destination-desc">Famous for its powdery white sand beaches and family-friendly resorts, perfect for a relaxing family vacation.</p>
+                     <a href="login.php?destination=Boracay" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 2. Bohol -->
             <article class="destination-card">
-                <img src="img/bohol.jpg" alt="Bohol" class="destination-img">
+                <img src="destinations/bohol.jpg" alt="Bohol" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Bohol</h3>
                     <p class="destination-location">Central Visayas</p>
                     <p class="destination-desc">Home to the Chocolate Hills, tarsiers, and beautiful beaches—great for family adventures and relaxation.</p>
+                     <a href="login.php?destination=Bohol" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 3. Tagaytay -->
             <article class="destination-card">
-                <img src="img/tagaytay.jpg" alt="Tagaytay" class="destination-img">
+                <img src="destinations/tagaytay.jpg" alt="Tagaytay" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Tagaytay</h3>
                     <p class="destination-location">Cavite</p>
                     <p class="destination-desc">A cool, scenic city with family-friendly parks, gardens, and stunning views of Taal Volcano.</p>
+                     <a href="login.php?destination=Tagaytay" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 4. Palawan (Puerto Princesa) -->
             <article class="destination-card">
-                <img src="img/puerto-princesa.jpg" alt="Puerto Princesa" class="destination-img">
+                <img src="destinations/puerto.jpg" alt="Puerto Princesa" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Puerto Princesa</h3>
                     <p class="destination-location">Palawan</p>
                     <p class="destination-desc">Known for the Underground River and beautiful beaches—ideal for family exploration and relaxation.</p>
+                     <a href="login.php?destination=Puerto Princesa" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 5. Baguio -->
             <article class="destination-card">
-                <img src="img/baguio.jpg" alt="Baguio" class="destination-img">
+                <img src="destinations/baguio.jpg" alt="Baguio" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Baguio</h3>
                     <p class="destination-location">Benguet</p>
                     <p class="destination-desc">The “Summer Capital” with cool weather, parks, and family-friendly attractions.</p>
+                     <a href="login.php?destination=Baguio" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 6. La Union -->
             <article class="destination-card">
-                <img src="img/la-union.jpg" alt="La Union" class="destination-img">
+                <img src="destinations/la_union.jpg" alt="La Union" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">La Union</h3>
                     <p class="destination-location">Ilocos Region</p>
-                    <p class="destination-desc">A favorite for surfing, beach trips, and family bonding by the sea.</p>
+                    <p class="destination-desc">A favorite for surfing, beach trips, and family bonding by the sea.</p><br>
+                     <a href="login.php?destination=La Union" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 7. Davao -->
             <article class="destination-card">
-                <img src="img/davao.jpg" alt="Davao" class="destination-img">
+                <img src="destinations/davao.jpg" alt="Davao" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Davao</h3>
                     <p class="destination-location">Mindanao</p>
-                    <p class="destination-desc">Home to the Philippine Eagle, beautiful parks, and family-friendly resorts.</p>
+                    <p class="destination-desc">Home to the Philippine Eagle, beautiful parks, and family-friendly resorts.</p><br>
+                     <a href="login.php?destination=Davao" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 8. Cebu -->
             <article class="destination-card">
-                <img src="img/cebu.jpg" alt="Cebu" class="destination-img">
+                <img src="destinations/cebu_city.jpg" alt="Cebu" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Cebu</h3>
                     <p class="destination-location">Central Visayas</p>
                     <p class="destination-desc">Offers beautiful beaches, historic sites, and family-friendly attractions for all ages.</p>
+                     <a href="login.php?destination=Cebu" class="book-now-btn">Book Now</a>
                 </div>
             </article>
         </div>
-        <a href="packages.php" class="go-to-package-btn">Go to Package</a>
     </main>
 </body>
 </html>

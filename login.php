@@ -455,6 +455,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     <a href="index.php" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
     <div class="bx bx-menu" id="menu-icon" role="button" aria-label="Toggle menu"></div>
     <nav class="navbar" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.php">Home</a></li>
+        <li><a href="login.php" aria-current="page">Account</a></li>
+        <li><a href="destinations.php">Destinations</a></li>
+        <li><a href="about_us.php">About</a></li>
+        <li><a href="contact_us.php">Contact Us</a></li>
+    </ul>
+</nav>
   </header>
 
   <!-- Login Section -->
@@ -486,11 +494,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <div class="list">
           <h4 id="footer-title">Quick Links</h4>
           <ul>
-            <li><a href="about us.php" target="_blank" rel="noopener noreferrer">About Us</a></a></li>
-            <li><a href="terms-conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
-            <li><a href="privacypolicy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+            <li><a href="about_us.php" target="_blank" rel="noopener noreferrer">About Us</a></a></li>
+            <li><a href="terms_conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
+            <li><a href="privacy_policy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
             <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></a></li>
-            <li><a href="packages.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
+            <li><a href="destinations.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
           </ul>
         </div>
         <div class="list">

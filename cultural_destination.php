@@ -95,24 +95,25 @@
             font-size: 0.95rem;
             margin-bottom: 1rem;
         }
-        .go-to-package-btn {
+        .book-now-btn {
             display: block;
-            width: max-content;
-            margin: 0 auto 3rem;
+            width: 100%;
             background: linear-gradient(90deg, #e67e22, #f6b93b);
             color: #fff;
             border: none;
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
+            padding: 0.8rem 0;
+            font-size: 1.05rem;
             font-weight: 600;
             border-radius: 2rem;
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(230,126,34,0.13);
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.13);
             text-decoration: none;
             text-align: center;
+            margin-top: auto;
         }
-        .go-to-package-btn:hover {
+
+        .book-now-btn:hover {
             background: linear-gradient(90deg, #f6b93b, #e67e22);
             transform: translateY(-2px) scale(1.04);
         }
@@ -127,78 +128,85 @@
         <div class="destinations-grid">
             <!-- 1. Vigan -->
             <article class="destination-card">
-                <img src="img/vigan.jpg" alt="Vigan" class="destination-img">
+                <img src="destinations/vigan.jpg" alt="Vigan" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Vigan</h3>
                     <p class="destination-location">Ilocos Sur</p>
                     <p class="destination-desc">A UNESCO World Heritage Site with well-preserved Spanish colonial architecture and cobblestone streets.</p>
+                    <a href="login.php?destination=Vigan" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 2. Intramuros -->
             <article class="destination-card">
-                <img src="img/intramuros.jpg" alt="Intramuros" class="destination-img">
+                <img src="destinations/intramuros.jpg" alt="Intramuros" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Intramuros</h3>
                     <p class="destination-location">Manila</p>
                     <p class="destination-desc">The historic walled city of Manila, featuring Fort Santiago, San Agustin Church, and Spanish-era landmarks.</p>
+                    <a href="login.php?destination=Intramuros" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 3. Banaue Rice Terraces -->
             <article class="destination-card">
-                <img src="img/banaue.jpg" alt="Banaue Rice Terraces" class="destination-img">
+                <img src="destinations/banaue.jpg" alt="Banaue Rice Terraces" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Banaue Rice Terraces</h3>
                     <p class="destination-location">Ifugao</p>
                     <p class="destination-desc">A UNESCO World Heritage Site, known as the "Eighth Wonder of the World" for its ancient rice terraces.</p>
+                    <a href="login.php?destination=Banaue Rice Terraces" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 4. Paoay Church -->
             <article class="destination-card">
-                <img src="img/paoay.jpg" alt="Paoay Church" class="destination-img">
+                <img src="destinations/paoay.jpg" alt="Paoay Church" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Paoay Church</h3>
                     <p class="destination-location">Ilocos Norte</p>
-                    <p class="destination-desc">A UNESCO World Heritage Site, famous for its massive buttresses and earthquake-baroque architecture.</p>
+                    <p class="destination-desc">A UNESCO World Heritage Site, famous for its massive buttresses and earthquake-baroque architecture.</p><br>
+                    <a href="login.php?destination=Paoay Church" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 5. Cebu Heritage Sites -->
             <article class="destination-card">
-                <img src="img/cebu-heritage.jpg" alt="Cebu Heritage Sites" class="destination-img">
+                <img src="destinations/cebu.jpg" alt="Cebu Heritage Sites" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Cebu Heritage Sites</h3>
                     <p class="destination-location">Cebu</p>
                     <p class="destination-desc">Includes Magellan’s Cross, Basilica Minore del Santo Niño, and Fort San Pedro—key landmarks in Philippine history.</p>
+                    <a href="login.php?destination=Cebu Heritage Sites" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 6. Corregidor -->
             <article class="destination-card">
-                <img src="img/corregidor.jpg" alt="Corregidor" class="destination-img">
+                <img src="destinations/corregidor.jpg" alt="Corregidor" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Corregidor</h3>
                     <p class="destination-location">Cavite</p>
-                    <p class="destination-desc">A historic island fortress from World War II, offering guided tours and panoramic views of Manila Bay.</p>
+                    <p class="destination-desc">A historic island fortress from World War II, offering guided tours and panoramic views of Manila Bay.</p><br>
+                    <a href="login.php?destination=Corregidor" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 7. Rizal Park -->
             <article class="destination-card">
-                <img src="img/rizal-park.jpg" alt="Rizal Park" class="destination-img">
+                <img src="destinations/rizal.jpg" alt="Rizal Park" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Rizal Park</h3>
                     <p class="destination-location">Manila</p>
                     <p class="destination-desc">A national park and monument dedicated to Dr. Jose Rizal, the Philippines’ national hero.</p>
+                    <a href="login.php?destination=Rizal Park" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 8. Sagada -->
             <article class="destination-card">
-                <img src="img/sagada.jpg" alt="Sagada" class="destination-img">
+                <img src="destinations/sagada_2.jpg" alt="Sagada" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Sagada</h3>
                     <p class="destination-location">Mountain Province</p>
                     <p class="destination-desc">Famous for its hanging coffins, caves, and rich indigenous culture—perfect for cultural immersion.</p>
+                    <a href="login.php?destination=Sagada" class="book-now-btn">Book Now</a>
                 </div>
             </article>
         </div>
-        <a href="packages.php" class="go-to-package-btn">Go to Package</a>
     </main>
 </body>
 </html>

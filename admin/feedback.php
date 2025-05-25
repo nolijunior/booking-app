@@ -1,3 +1,65 @@
+<?php
+// Database connection
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "roamhorizon";
+$conn = new mysqli($host, $user, $pass, $db, 3306);
+
+if ($conn->connect_error) {
+    $error = "Connection failed: " . $conn->connect_error;
+    header("Location: ../contact_us.php?status=error&message=" . urlencode($error));
+    exit();
+}
+
+// Check if the form was submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sanitize and validate inputs
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $message = filter_input(INPUT_POST, 'message', FILTER_SANITIZE_STRING);
+
+    // Basic validation
+    if (empty($name) || empty($email) || empty($message)) {
+        $error = "All fields are required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Invalid email format.";
+    } else {
+        // Check if table exists
+        $result = $conn->query("SHOW TABLES LIKE 'feedbacks'");
+        if ($result->num_rows == 0) {
+            $error = "Feedbacks table does not exist in the database.";
+        } else {
+            // Prepare and execute the SQL statement
+            $stmt = $conn->prepare("INSERT INTO feedbacks (full_name, email, message) VALUES (?, ?, ?)");
+            if ($stmt === false) {
+                $error = "Failed to prepare statement: " . $conn->error;
+            } else {
+                $stmt->bind_param("sss", $name, $email, $message);
+                if ($stmt->execute()) {
+                    $success = "Thank you for your message! We'll get back to you soon.";
+                } else {
+                    $error = "Error inserting data: " . $stmt->error;
+                }
+                $stmt->close();
+            }
+        }
+    }
+}
+
+// Close the database connection
+$conn->close();
+
+// Redirect back to contact page with feedback
+$redirect_url = "../contact_us.php";
+if (isset($success)) {
+    $redirect_url .= "?status=success&message=" . urlencode($success);
+} elseif (isset($error)) {
+    $redirect_url .= "?status=error&message=" . urlencode($error);
+}
+header("Location: $redirect_url");
+exit();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,7 +164,7 @@
   <div class="admin-container">
     <aside class="sidebar">
       <div class="logo">
-        <h2><i class="fas fa-user-cog"></i> RoamHorizon</h2>
+        <h2><i class="fas fa-user-cog"></i> Admin Panel</h2>
       </div>
       <nav class="menu">
         <a href="dashboard.php" class="menu-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>

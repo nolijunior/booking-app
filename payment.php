@@ -45,24 +45,7 @@
             font-weight: 700;
         }
         .logo:hover { color: #e67e22; }
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-        .navbar ul li a {
-            color: #34495e;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s;
-            padding-bottom: 0.25rem;
-        }
-        .navbar ul li a:hover {
-            color: #e67e22;
-        }
+
         main {
             max-width: 800px;
             margin: 2rem auto;
@@ -100,7 +83,7 @@
             font-weight: 600;
             color: #2c3e50;
         }
-        .form-group input, .form-group select, .form-group textarea {
+        .form-group input {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
@@ -108,9 +91,15 @@
             font-size: 1rem;
             transition: border 0.3s;
         }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+        .form-group input:focus {
             border-color: #e67e22;
             outline: none;
+        }
+        .form-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+            margin-top: 1rem;
         }
         .form-submit {
             background: linear-gradient(90deg, #e67e22, #f6b93b);
@@ -123,6 +112,9 @@
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
             box-shadow: 0 4px 15px rgba(230,126,34,0.13);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
         }
         .form-submit:hover {
             background: linear-gradient(90deg, #f6b93b, #e67e22);
@@ -157,7 +149,10 @@
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
             </div>
-            <button type="submit" class="form-submit">Pay Now</button>
+            <div class="form-buttons">
+                <button type="submit" class="form-submit">Pay Now</button>
+                <a href="destinations.php" class="form-submit">Cancel</a>
+            </div>
         </form>
     </main>
 </body>

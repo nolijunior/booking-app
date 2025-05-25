@@ -13,7 +13,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('img/background6.jpg') no-repeat center center fixed;
+            background: url('img/background12.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             color: #2c3e50;
@@ -204,7 +204,6 @@
                 <li><a href="index.php" aria-current="page">Home</a></li>
                 <li><a href="login.php">Account</a></li>
                 <li><a href="destinations.php">Destinations</a></li>
-                <li><a href="packages.php">Packages</a></li>
                 <li><a href="about_us.php">About</a></li>
                 <li><a href="contact_us.php">Contact Us</a></li>
             </ul>
@@ -227,11 +226,11 @@
                 <div class="list">
                     <h4 id="footer-title">Quick Links</h4>
                     <ul>
-                        <li><a href="about us.php" target="_blank" rel="noopener noreferrer">About Us</a></li>
-                        <li><a href="terms-conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
-                        <li><a href="privacypolicy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                        <li><a href="about_us.php" target="_blank" rel="noopener noreferrer">About Us</a></li>
+                        <li><a href="terms_conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
+                        <li><a href="privacy_policy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
                         <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></li>
-                        <li><a href="packages.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
+                        <li><a href="destinations.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
                     </ul>
                 </div>
                 <div class="list">

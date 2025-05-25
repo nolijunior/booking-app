@@ -1,3 +1,8 @@
+<?php
+// Check for feedback messages
+$status = isset($_GET['status']) ? $_GET['status'] : '';
+$message = isset($_GET['message']) ? htmlspecialchars($_GET['message']) : '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -303,32 +308,26 @@ section h2 {
     box-shadow: 0 4px 18px rgba(44,62,80,0.08);
 }
 
-/* FAQ Section - Improved Readability */
+/* FAQ Section - White Container Box */
 .faq {
-    background: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0 1.5rem;
-    margin: 3rem auto 3rem auto;
-    max-width: 700px;
-}
-
-.faq {
-    max-width: 1140px;
+    background: #ffffff; /* White background container */
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
     margin: 3rem auto 5rem auto;
+    max-width: 1140px;
 }
 
-/* Keep the rest of the FAQ readable and clean */
+/* FAQ content styling */
 .faq dl {
     color: #222 !important;
     font-size: 1.08rem;
     line-height: 1.7;
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
     padding: 0;
+    margin: 0;
 }
 
+/* FAQ Question */
 .faq dt {
     color: #e67e22 !important;
     font-weight: 700;
@@ -337,19 +336,17 @@ section h2 {
     cursor: pointer;
     transition: color 0.2s;
     letter-spacing: 0.5px;
-    background: none;
 }
 
+/* FAQ Answer */
 .faq dd {
     color: #222 !important;
-    background: none;
     border-left: 3px solid #f6b93b;
-    border-radius: 0;
     margin-bottom: 1.5rem;
     padding: 0.75rem 1rem 0.75rem 1.25rem;
     font-weight: 400;
-    box-shadow: none;
 }
+
 /* Newsletter */
 .newsletter {
     background: rgba(255,255,255,0.93);
@@ -446,15 +443,21 @@ footer {
     outline: none;
 }
 .social a {
-    font-size: 1.6rem;
-    margin-right: 1.2rem;
-    color: #34495e;
-    transition: color 0.3s, transform 0.3s;
-}
-.social a:hover, .social a:focus {
-    color: #e67e22;
-    transform: scale(1.15);
-    outline: none;
+            font-size: 1.6rem;
+            margin-right: 1.2rem;
+            color: #34495e;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social a:hover {
+            color: #e67e22;
+            transform: scale(1.15);
+        }
+        .social img {
+            width: 1.6rem;
+            height: 1.6rem;
+            margin-right: 1.2rem;
+            vertical-align: middle;
+        }
 }
 .end-text {
     text-align: center;
@@ -503,7 +506,6 @@ footer {
         <li><a href="index.php">Home</a></li>
         <li><a href="login.php">Account</a></li>
         <li><a href="destinations.php">Destinations</a></li>
-        <li><a href="packages.php">Packages</a></li>
         <li><a href="about_us.php">About</a></li>
         <li><a href="contact_us.php" aria-current="page">Contact Us</a></li>
     </ul>
@@ -538,7 +540,12 @@ footer {
   <h2 id="contact-form-title" style="font-family: 'Paytone One', sans-serif; font-size: 2.5rem; color: #2c3e50; margin-bottom: 1.5rem; text-align:center;">
     Send Us a Message
   </h2>
-  <form style="display:flex; flex-direction:column; gap:1.25rem;">
+  <?php if (!empty($message)): ?>
+    <div class="feedback-message <?php echo $status; ?>">
+      <?php echo $message; ?>
+    </div>
+  <?php endif; ?>
+  <form action="admin/feedback.php" method="POST" style="display:flex; flex-direction:column; gap:1.25rem;">
     <input type="text" name="name" placeholder="Your Full Name" aria-label="Full Name" required style="padding:0.75rem 1rem; border-radius:0.75rem; border:1px solid #ddd; font-size:1rem;"/>
     <input type="email" name="email" placeholder="Your Email Address" aria-label="Email Address" required style="padding:0.75rem 1rem; border-radius:0.75rem; border:1px solid #ddd; font-size:1rem;"/>
     <textarea name="message" rows="5" placeholder="Your Message" aria-label="Message" required style="padding:0.75rem 1rem; border-radius:0.75rem; border:1px solid #ddd; font-size:1rem;"></textarea>
@@ -551,13 +558,15 @@ footer {
 <!-- Google Map Embed -->
 <section class="map" aria-label="Office Location Map" style="max-width:1140px; margin:3rem auto; padding:0 1.5rem;">
   <iframe 
-    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.123456789012!2d125.000000!3d6.500000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f123456789abcd%3A0x123456789abcdef!2sRoamHorizon%20Travels%20Office!5e0!3m2!1sen!2sph!4v1610000000000!5m2!1sen!2sph" 
-    width="100%" height="400" style="border:0; border-radius:1rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Google Map of RoamHorizon Travels Office"></iframe>
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31836.16173186292!2d124.95178019347656!3d6.332136518550254!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32f791b6092d28b3%3A0xe496bc30352d99c7!2sPoblacion%2C%20Tupi%2C%20South%20Cotabato!5e0!3m2!1sen!2sph!4v1716531260000!5m2!1sen!2sph" 
+    width="100%" height="400" style="border:0; border-radius:1rem;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Google Map of Poblacion, Tupi, South Cotabato">
+  </iframe>
 </section>
+
 
 <!-- FAQ Section -->
 <section class="faq" aria-labelledby="faq-title" style="max-width: 1140px; margin: 3rem auto 5rem auto;">
-    <h2 id="faq-title" style="font-family: 'Paytone One', sans-serif; font-size: 2.2rem; color: #b3b3b3; margin-bottom: 2rem; text-align: center; letter-spacing: 1px;">
+    <h2 id="faq-title" style="font-family: 'Paytone One', sans-serif; font-size: 2.2rem; color: #2c3e50; margin-bottom: 2rem; text-align: center; letter-spacing: 1px;">
         Frequently Asked Questions
     </h2>
     <dl style="color: #bbbbbb; font-size: 1.08rem; line-height: 1.7;">
@@ -601,11 +610,11 @@ footer {
                 <div class="list">
                     <h4 id="footer-title">Quick Links</h4>
                     <ul>
-                        <li><a href="about us.php" target="_blank" rel="noopener noreferrer">About Us</a></a></li>
-                        <li><a href="terms-conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
-                        <li><a href="privacypolicy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-                        <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></a></li>
-                        <li><a href="packages.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
+                        <li><a href="about_us.php" target="_blank" rel="noopener noreferrer">About Us</a></li>
+                        <li><a href="terms_conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
+                        <li><a href="privacy_policy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                        <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></li>
+                        <li><a href="destinations.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
                     </ul>
                 </div>
                 <div class="list">
@@ -627,21 +636,20 @@ footer {
                 </div>
                 <div class="list">
                     <h4>Connect</h4>
-                   <div class="social">
-    <a href="https://www.facebook.com/share/1AjQnK2rp9/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-        <img src="img/logo-facebook.svg" alt="Facebook" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="Instagram">
-        <img src="img/logo-instagram.svg" alt="Instagram" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="Twitter">
-        <img src="img/logo-twitter.svg" alt="Twitter" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="LinkedIn">
-        <img src="img/logo-linkedin.svg" alt="LinkedIn" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-</div>
-
+                    <div class="social">
+                        <a href="https://www.facebook.com/share/1AjQnK2rp9/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <img src="img/logo-facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <img src="img/logo-instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <img src="img/logo-twitter.svg" alt="Twitter">
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <img src="img/logo-linkedin.svg" alt="LinkedIn">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

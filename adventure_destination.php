@@ -182,7 +182,7 @@
                     <h3 class="destination-name">El Nido</h3>
                     <p class="destination-location">Palawan</p>
                     <p class="destination-desc">Renowned for its limestone cliffs, hidden lagoons, and world-class island hopping tours.</p>
-                   <a href="adventure_booking.php?destination=El Nido" class="book-now-btn">Book Now</a>
+                   <a href="login.php?destination=El Nido" class="book-now-btn">Book Now</a>
                 </div>
             </article>
 
@@ -192,7 +192,7 @@
                     <h3 class="destination-name">Batad Rice Terraces</h3>
                     <p class="destination-location">Ifugao</p>
                     <p class="destination-desc">A UNESCO World Heritage Site. Offers challenging hikes and stunning views of ancient rice terraces.</p>
-                   <a href="adventure_booking.php?destination=Batad Rice Terraces" class="book-now-btn">Book Now</a>
+                   <a href="login.php?destination=Batad Rice Terraces" class="book-now-btn">Book Now</a>
                 </div>
             </article>
 
@@ -217,7 +217,7 @@
             </article>
 
             <article class="destination-card">
-                <img src="img/donsol.jpg" alt="Donsol" class="destination-img">
+                <img src="destinations/donsol.jpg" alt="Donsol" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Donsol</h3>
                     <p class="destination-location">Sorsogon</p>
@@ -227,7 +227,7 @@
             </article>
 
             <article class="destination-card">
-                <img src="img/mount-apo.jpg" alt="Mount Apo" class="destination-img">
+                <img src="destinations/apo.jpg" alt="Mount Apo" class="destination-img">
                 <div class="destination-content">
                     <h3 class="destination-name">Mount Apo</h3>
                     <p class="destination-location">Davao</p>

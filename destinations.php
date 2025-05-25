@@ -272,15 +272,21 @@ footer {
 }
 .list ul li a:hover { color: #e67e22; }
 .social a {
-    font-size: 1.6rem;
-    margin-right: 1.2rem;
-    color: #34495e;
-    transition: color 0.3s, transform 0.3s;
-}
-.social a:hover {
-    color: #e67e22;
-    transform: scale(1.15);
-}
+            font-size: 1.6rem;
+            margin-right: 1.2rem;
+            color: #34495e;
+            transition: color 0.3s, transform 0.3s;
+        }
+        .social a:hover {
+            color: #e67e22;
+            transform: scale(1.15);
+        }
+        .social img {
+            width: 1.6rem;
+            height: 1.6rem;
+            margin-right: 1.2rem;
+            vertical-align: middle;
+        }
 .end-text {
     text-align: center;
     font-weight: 300;
@@ -298,18 +304,17 @@ footer {
         <li><a href="index.php">Home</a></li>
         <li><a href="login.php">Account</a></li>
         <li><a href="destinations.php" aria-current="page">Destinations</a></li>
-        <li><a href="packages.php">Packages</a></li>
         <li><a href="about_us.php">About</a></li>
         <li><a href="contact_us.php">Contact Us</a></li>
     </ul>
 </nav>
     </header>
     <section class="destination-section">
-        <h2>Choose Your Experience</h2>
+        <h2>Discover Endless Horizons with Unforgettable Escapes!</h2>
         <div class="row-items">
             <article class="container-box">
                 <div class="container-img">
-                    <img src="img/image (8).jpg" alt="Adventure and Exploration">
+                    <img src="img/image_8.jpg" alt="Adventure and Exploration">
                 </div>
                 <h4>Adventure & Exploration</h4>
                 <p>For thrill-seekers and nature lovers, our adventure packages are designed to get your heart racing and your spirit soaring.</p>
@@ -317,7 +322,7 @@ footer {
             </article>
             <article class="container-box">
                 <div class="container-img">
-                    <img src="img/image (9).jpg" alt="Romance and Honeymoon">
+                    <img src="img/image_9.jpg" alt="Romance and Honeymoon">
                 </div>
                 <h4>Romance & Honeymoon</h4>
                 <p>Celebrate love with our specially curated romantic getaways.</p><br><br>
@@ -325,7 +330,7 @@ footer {
             </article>
             <article class="container-box">
                 <div class="container-img">
-                    <img src="img/image (10).jpg" alt="Family Fun and Relaxation">
+                    <img src="img/image_10.jpg" alt="Family Fun and Relaxation">
                 </div>
                 <h4>Family Fun & Relaxation</h4>
                 <p>Create lasting memories with family-friendly vacations that cater to all ages.</p><br><br>
@@ -333,7 +338,7 @@ footer {
             </article>
             <article class="container-box">
                 <div class="container-img">
-                    <img src="img/image (11).jpg" alt="Cultural and Historical Journeys">
+                    <img src="img/image_11.jpg" alt="Cultural and Historical Journeys">
                 </div>
                 <h4>Cultural & Historical Journeys</h4>
                 <p>Immerse yourself in the rich tapestry of global cultures with our heritage-focused travel packages.</p>
@@ -341,7 +346,7 @@ footer {
             </article>
             <article class="container-box">
                 <div class="container-img">
-                    <img src="img/image (12).jpg" alt="Corporate and Group Travel">
+                    <img src="img/image_12.jpg" alt="Corporate and Group Travel">
                 </div>
                 <h4>Corporate & Group Travel</h4>
                 <p>Simplify your business trips and group travel with RoamHorizon’s corporate solutions.</p>
@@ -356,11 +361,11 @@ footer {
                 <div class="list">
                     <h4 id="footer-title">Quick Links</h4>
                     <ul>
-                        <li><a href="about us.php" target="_blank" rel="noopener noreferrer">About Us</a></a></li>
-                        <li><a href="terms-conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
-                        <li><a href="privacypolicy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
-                        <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></a></li>
-                        <li><a href="packages.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
+                        <li><a href="about_us.php" target="_blank" rel="noopener noreferrer">About Us</a></li>
+                        <li><a href="terms_conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
+                        <li><a href="privacy_policy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                        <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></li>
+                        <li><a href="destinations.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
                     </ul>
                 </div>
                 <div class="list">
@@ -382,21 +387,20 @@ footer {
                 </div>
                 <div class="list">
                     <h4>Connect</h4>
-                   <div class="social">
-    <a href="https://www.facebook.com/share/1AjQnK2rp9/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-        <img src="img/logo-facebook.svg" alt="Facebook" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="Instagram">
-        <img src="img/logo-instagram.svg" alt="Instagram" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="Twitter">
-        <img src="img/logo-twitter.svg" alt="Twitter" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-    <a href="#" aria-label="LinkedIn">
-        <img src="img/logo-linkedin.svg" alt="LinkedIn" style="width:1.6rem; height:1.6rem; margin-right:1.2rem;">
-    </a>
-</div>
-
+                    <div class="social">
+                        <a href="https://www.facebook.com/share/1AjQnK2rp9/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <img src="img/logo-facebook.svg" alt="Facebook">
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <img src="img/logo-instagram.svg" alt="Instagram">
+                        </a>
+                        <a href="#" aria-label="Twitter">
+                            <img src="img/logo-twitter.svg" alt="Twitter">
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <img src="img/logo-linkedin.svg" alt="LinkedIn">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
