@@ -1,4 +1,5 @@
 <?php
+require_once '../includes/header.php';
 require_once("../config/db.php");
 
 $user_id = intval($_GET['id'] ?? 0);

@@ -1,10 +1,4 @@
-<?php
-session_start();
-// var_dump($_SESSION);
-if (!isset($_SESSION['email']) || $_SESSION['email'] !== 'admin@admin.com') {
-  header("Location: /login.php");
-}
-?>
+<?php require_once '../includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -167,15 +161,36 @@ if (!isset($_SESSION['email']) || $_SESSION['email'] !== 'admin@admin.com') {
     <main class="main-content">
       <div class="welcome">Welcome to your admin panel</div>
       <div class="dashboard-cards">
+        <?php
+        require_once '../config/db.php';
+
+        // Count all users
+        $sql_user = "SELECT COUNT(*) AS total FROM users WHERE user_id != 1";
+        $result_user = $conn->query($sql_user);
+        $userCount = 0;
+        if ($result_user && $row = $result_user->fetch_assoc()) {
+          $userCount = $row['total'];
+        }
+
+        // Count all bookings
+        $sql_booking = "SELECT COUNT(*) AS total FROM bookings";
+        $result_booking = $conn->query($sql_booking);
+        $bookingCount = 0;
+        if ($result_booking && $row = $result_booking->fetch_assoc()) {
+          $bookingCount = $row['total'];
+        }
+
+        // Count all feedbacks TODO NOLI
+        ?>
         <div class="card users-card">
           <i class="fas fa-users"></i>
           <h3>Total Users</h3>
-          <div class="counter" id="userCount">0</div>
+          <div class="counter" id="userCount"><?= $userCount ?></div>
         </div>
         <div class="card bookings-card">
           <i class="fas fa-calendar-check"></i>
           <h3>Total Bookings</h3>
-          <div class="counter" id="bookingCount">0</div>
+          <div class="counter" id="bookingCount"><?= $bookingCount ?></div>
         </div>
         <div class="card feedbacks-card">
           <i class="fas fa-comment-dots"></i>

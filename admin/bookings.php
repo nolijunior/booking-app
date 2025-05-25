@@ -1,5 +1,7 @@
+<?php require_once '../includes/header.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,16 +9,23 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background: #f1f5f9;
       color: #1e293b;
     }
+
     .admin-container {
       display: flex;
       height: 100vh;
     }
+
     .sidebar {
       width: 260px;
       background: #1e293b;
@@ -25,6 +34,7 @@
       justify-content: space-between;
       padding: 2rem 1rem;
     }
+
     .logo h2 {
       font-size: 1.5rem;
       font-weight: 600;
@@ -32,11 +42,13 @@
       text-align: center;
       margin-bottom: 2rem;
     }
+
     .menu {
       display: flex;
       flex-direction: column;
       gap: 1rem;
     }
+
     .menu-item {
       display: flex;
       align-items: center;
@@ -48,31 +60,37 @@
       border-radius: 0.5rem;
       transition: background 0.3s ease;
     }
+
     .menu-item:hover,
     .menu-item.active {
       background: #334155;
       color: #ffffff;
     }
+
     .logout {
       margin-top: auto;
       padding-top: 1rem;
       border-top: 1px solid #475569;
     }
+
     .main-content {
       flex: 1;
       padding: 2rem;
       overflow-y: auto;
     }
+
     .topbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
       margin-bottom: 2rem;
     }
+
     .topbar h1 {
       font-size: 1.75rem;
       font-weight: bold;
     }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -81,15 +99,19 @@
       overflow: hidden;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
     }
-    th, td {
+
+    th,
+    td {
       padding: 1rem;
       text-align: left;
       border-bottom: 1px solid #e2e8f0;
     }
+
     th {
       background-color: #f8fafc;
       font-weight: 600;
     }
+
     .empty-message {
       text-align: center;
       padding: 2rem;
@@ -98,6 +120,7 @@
     }
   </style>
 </head>
+
 <body>
   <div class="admin-container">
     <aside class="sidebar">
@@ -164,4 +187,5 @@
     renderBookings();
   </script>
 </body>
+
 </html>
