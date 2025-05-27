@@ -35,7 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
             if ($stmt->execute()) {
                 $_SESSION['user_email'] = $email;
-                header("Location: index.php");
+                echo "<script>alert('You Have Successfully Created'); window.location.href = 'index.php'; </script>";
+                // header("Location: index.php");
                 exit;
             } else {
                 $error = "Registration failed. Please try again.";
@@ -345,6 +346,13 @@ footer {
           Already have an account? <a href="login.php">Log in here</a>
         </p>
       </form>
+      <script>
+            document.querySelector('.signup-form').addEventListener('submit', function(event) {
+                if (!confirm('You Want To Create Account?')) {
+                    event.preventDefault();
+                }
+            });
+              </script>
     </div>
   </section>
 
