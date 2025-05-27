@@ -133,7 +133,7 @@
                     <h3 class="destination-name">Makati</h3>
                     <p class="destination-location">Metro Manila</p>
                     <p class="destination-desc">The country’s financial capital, offering world-class hotels, convention centers, and vibrant nightlife for business and group events.</p>
-                    <a href="login.php?destination=Makati" class="book-now-btn">Book Now</a>
+                    <a href="corporate_booking.php?destination=Makati" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 2. BGC (Bonifacio Global City) -->
@@ -143,7 +143,7 @@
                     <h3 class="destination-name">Bonifacio Global City</h3>
                     <p class="destination-location">Taguig, Metro Manila</p>
                     <p class="destination-desc">A modern business district with top-notch conference venues, luxury hotels, and upscale dining for corporate retreats.</p>
-                    <a href="login.php?destination=Bonifacio Global City" class="book-now-btn">Book Now</a>
+                    <a href="corporate_booking.php?destination=Bonifacio Global City" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 3. Clark -->
@@ -153,7 +153,7 @@
                     <h3 class="destination-name">Clark</h3>
                     <p class="destination-location">Pampanga</p>
                     <p class="destination-desc">Home to Clark Freeport Zone, international airport, and MICE facilities—ideal for large conferences and corporate events.</p>
-                    <a href="login.php?destination=Clark" class="book-now-btn">Book Now</a>
+                    <a href="corporate_booking.php?destination=Clark" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 4. Cebu City -->
@@ -163,7 +163,7 @@
                     <h3 class="destination-name">Cebu City</h3>
                     <p class="destination-location">Cebu</p>
                     <p class="destination-desc">A major business hub with modern hotels, convention centers, and easy access to scenic spots for team-building activities.</p>
-                    <a href="login.php?destination=Cebu City" class="book-now-btn">Book Now</a>
+                    <a href="corporate_booking.php?destination=Cebu City" class="book-now-btn">Book Now</a>
                 </article>
             <!-- 5. Davao City -->
             <article class="destination-card">
@@ -172,7 +172,7 @@
                     <h3 class="destination-name">Davao City</h3>
                     <p class="destination-location">Davao del Sur</p>
                     <p class="destination-desc">Known for its safety, business-friendly environment, and proximity to nature for corporate retreats and group tours.</p><br>
-                    <a href="login.php?destination=Davao City" class="book-now-btn">Book Now</a>
+                    <a href="corporate_booking.php?destination=Davao City" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 6. Subic -->
@@ -182,7 +182,7 @@
                     <h3 class="destination-name">Subic Bay</h3>
                     <p class="destination-location">Zambales</p>
                     <p class="destination-desc">Features a freeport zone, adventure parks, and beach resorts—perfect for corporate team-building and group outings.</p>
-                    <a href="login.php?destination=Subic Bay" class="book-now-btn">Book Now</a>
+                    <a href="corporate_booking.php?destination=Subic Bay" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 7. Tagaytay -->
@@ -192,7 +192,7 @@
                     <h3 class="destination-name">Tagaytay</h3>
                     <p class="destination-location">Cavite</p>
                     <p class="destination-desc">A cool, scenic city with convention hotels and leisure spots for business meetings and group getaways.</p><br>
-                    <a href="login.php?destination=Tagaytay" class="book-now-btn">Book Now</a>
+                    <a href="corporate_booking.php?destination=Tagaytay" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 8. Boracay -->
@@ -202,7 +202,7 @@
                     <h3 class="destination-name">Boracay</h3>
                     <p class="destination-location">Aklan</p>
                     <p class="destination-desc">A world-famous beach destination with conference hotels and leisure activities for corporate incentives and group travel.</p>
-                    <a href="login.php?destination=Boracay" class="book-now-btn">Book Now</a>
+                    <a href="corporate_booking.php?destination=Boracay" class="book-now-btn">Book Now</a>
                 </div>
             </article>
         </div>

@@ -133,7 +133,7 @@
                     <h3 class="destination-name">Vigan</h3>
                     <p class="destination-location">Ilocos Sur</p>
                     <p class="destination-desc">A UNESCO World Heritage Site with well-preserved Spanish colonial architecture and cobblestone streets.</p>
-                    <a href="login.php?destination=Vigan" class="book-now-btn">Book Now</a>
+                    <a href="cultural_booking.php?destination=Vigan" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 2. Intramuros -->
@@ -143,7 +143,7 @@
                     <h3 class="destination-name">Intramuros</h3>
                     <p class="destination-location">Manila</p>
                     <p class="destination-desc">The historic walled city of Manila, featuring Fort Santiago, San Agustin Church, and Spanish-era landmarks.</p>
-                    <a href="login.php?destination=Intramuros" class="book-now-btn">Book Now</a>
+                    <a href="cultural_booking.php?destination=Intramuros" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 3. Banaue Rice Terraces -->
@@ -153,7 +153,7 @@
                     <h3 class="destination-name">Banaue Rice Terraces</h3>
                     <p class="destination-location">Ifugao</p>
                     <p class="destination-desc">A UNESCO World Heritage Site, known as the "Eighth Wonder of the World" for its ancient rice terraces.</p>
-                    <a href="login.php?destination=Banaue Rice Terraces" class="book-now-btn">Book Now</a>
+                    <a href="cultural_booking.php?destination=Banaue Rice Terraces" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 4. Paoay Church -->
@@ -163,7 +163,7 @@
                     <h3 class="destination-name">Paoay Church</h3>
                     <p class="destination-location">Ilocos Norte</p>
                     <p class="destination-desc">A UNESCO World Heritage Site, famous for its massive buttresses and earthquake-baroque architecture.</p><br>
-                    <a href="login.php?destination=Paoay Church" class="book-now-btn">Book Now</a>
+                    <a href="cultural_booking.php?destination=Paoay Church" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 5. Cebu Heritage Sites -->
@@ -173,7 +173,7 @@
                     <h3 class="destination-name">Cebu Heritage Sites</h3>
                     <p class="destination-location">Cebu</p>
                     <p class="destination-desc">Includes Magellan’s Cross, Basilica Minore del Santo Niño, and Fort San Pedro—key landmarks in Philippine history.</p>
-                    <a href="login.php?destination=Cebu Heritage Sites" class="book-now-btn">Book Now</a>
+                    <a href="cultural_booking.php?destination=Cebu Heritage Sites" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 6. Corregidor -->
@@ -183,7 +183,7 @@
                     <h3 class="destination-name">Corregidor</h3>
                     <p class="destination-location">Cavite</p>
                     <p class="destination-desc">A historic island fortress from World War II, offering guided tours and panoramic views of Manila Bay.</p><br>
-                    <a href="login.php?destination=Corregidor" class="book-now-btn">Book Now</a>
+                    <a href="cultural_booking.php?destination=Corregidor" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 7. Rizal Park -->
@@ -193,7 +193,7 @@
                     <h3 class="destination-name">Rizal Park</h3>
                     <p class="destination-location">Manila</p>
                     <p class="destination-desc">A national park and monument dedicated to Dr. Jose Rizal, the Philippines’ national hero.</p>
-                    <a href="login.php?destination=Rizal Park" class="book-now-btn">Book Now</a>
+                    <a href="cultural_booking.php?destination=Rizal Park" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 8. Sagada -->
@@ -203,7 +203,7 @@
                     <h3 class="destination-name">Sagada</h3>
                     <p class="destination-location">Mountain Province</p>
                     <p class="destination-desc">Famous for its hanging coffins, caves, and rich indigenous culture—perfect for cultural immersion.</p>
-                    <a href="login.php?destination=Sagada" class="book-now-btn">Book Now</a>
+                    <a href="cultural_booking.php?destination=Sagada" class="book-now-btn">Book Now</a>
                 </div>
             </article>
         </div>

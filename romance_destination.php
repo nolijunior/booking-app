@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -130,7 +131,7 @@
           <h3 class="destination-name">El Nido</h3>
           <p class="destination-location">Palawan</p>
           <p class="destination-desc">World-famous for its stunning limestone cliffs, hidden lagoons, and pristine beaches—perfect for couples.</p>
-          <a href="login.php?destination=El Nido" class="book-now-btn">Book Now</a>
+          <a href="romance_booking.php?destination=El Nido" class="book-now-btn">Book Now</a>
         </div>
       </article>
 
@@ -141,7 +142,7 @@
           <h3 class="destination-name">Boracay</h3>
           <p class="destination-location">Aklan</p>
           <p class="destination-desc">White sand beaches, vibrant nightlife, and breathtaking sunsets make Boracay a top honeymoon spot.</p>
-          <a href="login.php?destination=Boracay" class="book-now-btn">Book Now</a>
+          <a href="romance_booking.php?destination=Boracay" class="book-now-btn">Book Now</a>
         </div>
       </article>
 
@@ -151,7 +152,7 @@
           <h3 class="destination-name">Batanes</h3>
           <p class="destination-location">Cagayan Valley</p>
           <p class="destination-desc">A remote paradise with rolling hills, dramatic cliffs, and a peaceful atmosphere—ideal for romantic getaways.</p>
-          <a href="login.php?destination=Batanes" class="book-now-btn">Book Now</a>
+          <a href="romance_booking.php?destination=Batanes" class="book-now-btn">Book Now</a>
         </div>
       </article>
 
@@ -161,7 +162,7 @@
           <h3 class="destination-name">Amanpulo</h3>
           <p class="destination-location">Pamalican Island, Palawan</p>
           <p class="destination-desc">A private island resort offering luxury, privacy, and pristine beaches for unforgettable honeymoons.</p>
-          <a href="login.php?destination=Amanpulo" class="book-now-btn">Book Now</a>
+          <a href="romance_booking.php?destination=Amanpulo" class="book-now-btn">Book Now</a>
         </div>
       </article>
 
@@ -171,7 +172,7 @@
           <h3 class="destination-name">Panglao Island</h3>
           <p class="destination-location">Bohol</p>
           <p class="destination-desc">Known for its white sand beaches, clear waters, and world-class resorts—perfect for romantic escapes.</p>
-          <a href="login.php?destination=Panglao Island" class="book-now-btn">Book Now</a>
+          <a href="romance_booking.php?destination=Panglao Island" class="book-now-btn">Book Now</a>
         </div>
       </article>
 
@@ -181,7 +182,7 @@
           <h3 class="destination-name">Camiguin</h3>
           <p class="destination-location">Northern Mindanao</p>
           <p class="destination-desc">A peaceful island with waterfalls, hot springs, and white sandbars—ideal for couples seeking tranquility.</p>
-          <a href="login.php?destination=Camiguin" class="book-now-btn">Book Now</a>
+          <a href="romance_booking.php?destination=Camiguin" class="book-now-btn">Book Now</a>
         </div>
       </article>
 
@@ -191,7 +192,7 @@
           <h3 class="destination-name">Coron</h3>
           <p class="destination-location">Palawan</p>
           <p class="destination-desc">Famous for its crystal-clear lakes, limestone cliffs, and romantic island-hopping tours.</p>
-          <a href="login.php?destination=Coron" class="book-now-btn">Book Now</a>
+          <a href="romance_booking.php?destination=Coron" class="book-now-btn">Book Now</a>
         </div>
       </article>
 
@@ -201,7 +202,7 @@
           <h3 class="destination-name">Siargao</h3>
           <p class="destination-location">Surigao del Norte</p>
           <p class="destination-desc">A tropical paradise with palm-fringed beaches, surfing, and a laid-back vibe—great for adventurous couples.</p>
-          <a href="login.php?destination=Siargao" class="book-now-btn">Book Now</a>
+          <a href="romance_booking.php?destination=Siargao" class="book-now-btn">Book Now</a>
         </div>
       </article>
     </div>

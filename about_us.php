@@ -103,64 +103,41 @@ header {
 }
 #menu-icon { display: none; }
 
-/* Dropdown Styles */
-        .navbar ul li.dropdown {
-            position: relative;
-        }
-        .dropdown-toggle {
-            cursor: pointer;
-            color: #34495e;
-            font-weight: 600;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.3s;
-            padding: 0.5rem 0;
-            user-select: none;
-        }
-        .dropdown-toggle:hover {
-            color: #e67e22;
-        }
-        .dropdown-menu {
+.dropdown-content {
             display: none;
             position: absolute;
-            top: 2.2rem;
+            top: 100%;
             left: 0;
-            min-width: 140px;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255,255,255,0.98);
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(44,62,80,0.13);
+            z-index: 200;
             border-radius: 0.7rem;
-            box-shadow: 0 8px 32px rgba(44,62,80,0.1);
-            z-index: 1002;
-            flex-direction: column;
-            padding: 0.5rem 0;
-            animation: fadeInDropdown 0.35s cubic-bezier(.39,.575,.565,1) both;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            padding: 0;
         }
-        .dropdown-menu li {
-            width: 100%;
-        }
-        .dropdown-menu li a {
+        .dropdown.show .dropdown-content {
             display: block;
-            width: 100%;
-            padding: 0.7rem 1.2rem;
-            color: #34495e;
-            background: none;
-            border: none;
+        }
+        .dropdown-content li {
+            padding: 0;
+            margin: 0;
             text-align: left;
+        }
+        .dropdown-content li a {
+            color: #34495e;
+            padding: 0.9rem 1.2rem;
             text-decoration: none;
+            display: block;
             font-weight: 500;
             font-size: 1rem;
             transition: background 0.2s, color 0.2s;
-            border-radius: 0.5rem;
         }
-        .dropdown-menu li a:hover {
-            background: #f6f6f6;
+        .dropdown-content li a:hover {
+            background: #ffe5c6;
             color: #e67e22;
         }
-        @keyframes fadeInDropdown {
-            0% { opacity: 0; transform: translateY(-10px);}
-            100% { opacity: 1; transform: translateY(0);}
-        }        
 /* About Section */
 .about {
   max-width: 1140px;
@@ -374,17 +351,38 @@ footer {
   
     <!-- Header -->
      <header>
-        <a href="index.php" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
-        <div class="bx bx-menu" id="menu-icon" role="button" aria-label="Toggle menu"></div>
-        <nav class="navbar" aria-label="Main navigation">
-    <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="login.php">Account</a></li>
-        <li><a href="destinations.php">Destinations</a></li>
-        <li><a href="about_us.php" aria-current="page">About</a></li>
-        <li><a href="contact_us.php">Contact Us</a></li>
-    </ul>
-</nav>
+        <a href="index.php" class="logo">RoamHorizon</a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <nav class="navbar">
+        <nav class="navbar">
+        <ul>
+            <li><a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a></li>
+
+            <?php if (isset($_SESSION['email'])): ?>
+                <li class="dropdown" id="accountDropdown">
+                    <a class="user-account" onclick="toggleDropdown(event)">
+                        <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="dropdown-content">
+                        <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
+                            <?php echo htmlspecialchars($_SESSION['email']); ?>
+                        </li>
+                        <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
+                    </ul>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
+                        <i class='bx bx-log-in'></i> Login
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <li><a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a></li>
+            <li><a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a></li>
+            <li><a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a></li>
+        </ul>
+    </nav>
     </header>
 
     <!-- About Section -->
@@ -498,6 +496,22 @@ footer {
     }
   }
 </script>
+<!-- JavaScript to toggle dropdown -->
+<script>
+function toggleDropdown(event) {
+    event.preventDefault();
+    event.stopPropagation();
 
+    const dropdown = document.getElementById('accountDropdown');
+    dropdown.classList.toggle('show');
+}
+
+document.addEventListener('click', function (e) {
+    const dropdown = document.getElementById('accountDropdown');
+    if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('show');
+    }
+});
+</script>
 </body>
 </html>

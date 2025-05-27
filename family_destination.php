@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,7 +134,7 @@
                     <h3 class="destination-name">Boracay</h3>
                     <p class="destination-location">Aklan</p>
                     <p class="destination-desc">Famous for its powdery white sand beaches and family-friendly resorts, perfect for a relaxing family vacation.</p>
-                     <a href="login.php?destination=Boracay" class="book-now-btn">Book Now</a>
+                     <a href="family_booking.php?destination=Boracay" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 2. Bohol -->
@@ -143,7 +144,7 @@
                     <h3 class="destination-name">Bohol</h3>
                     <p class="destination-location">Central Visayas</p>
                     <p class="destination-desc">Home to the Chocolate Hills, tarsiers, and beautiful beaches—great for family adventures and relaxation.</p>
-                     <a href="login.php?destination=Bohol" class="book-now-btn">Book Now</a>
+                     <a href="family_booking.php?destination=Bohol" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 3. Tagaytay -->
@@ -153,7 +154,7 @@
                     <h3 class="destination-name">Tagaytay</h3>
                     <p class="destination-location">Cavite</p>
                     <p class="destination-desc">A cool, scenic city with family-friendly parks, gardens, and stunning views of Taal Volcano.</p>
-                     <a href="login.php?destination=Tagaytay" class="book-now-btn">Book Now</a>
+                     <a href="family_booking.php?destination=Tagaytay" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 4. Palawan (Puerto Princesa) -->
@@ -163,7 +164,7 @@
                     <h3 class="destination-name">Puerto Princesa</h3>
                     <p class="destination-location">Palawan</p>
                     <p class="destination-desc">Known for the Underground River and beautiful beaches—ideal for family exploration and relaxation.</p>
-                     <a href="login.php?destination=Puerto Princesa" class="book-now-btn">Book Now</a>
+                     <a href="family_booking.php?destination=Puerto Princesa" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 5. Baguio -->
@@ -173,7 +174,7 @@
                     <h3 class="destination-name">Baguio</h3>
                     <p class="destination-location">Benguet</p>
                     <p class="destination-desc">The “Summer Capital” with cool weather, parks, and family-friendly attractions.</p>
-                     <a href="login.php?destination=Baguio" class="book-now-btn">Book Now</a>
+                     <a href="family_booking.php?destination=Baguio" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 6. La Union -->
@@ -183,7 +184,7 @@
                     <h3 class="destination-name">La Union</h3>
                     <p class="destination-location">Ilocos Region</p>
                     <p class="destination-desc">A favorite for surfing, beach trips, and family bonding by the sea.</p><br>
-                     <a href="login.php?destination=La Union" class="book-now-btn">Book Now</a>
+                     <a href="family_booking.php?destination=La Union" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 7. Davao -->
@@ -193,7 +194,7 @@
                     <h3 class="destination-name">Davao</h3>
                     <p class="destination-location">Mindanao</p>
                     <p class="destination-desc">Home to the Philippine Eagle, beautiful parks, and family-friendly resorts.</p><br>
-                     <a href="login.php?destination=Davao" class="book-now-btn">Book Now</a>
+                     <a href="family_booking.php?destination=Davao" class="book-now-btn">Book Now</a>
                 </div>
             </article>
             <!-- 8. Cebu -->
@@ -203,7 +204,7 @@
                     <h3 class="destination-name">Cebu</h3>
                     <p class="destination-location">Central Visayas</p>
                     <p class="destination-desc">Offers beautiful beaches, historic sites, and family-friendly attractions for all ages.</p>
-                     <a href="login.php?destination=Cebu" class="book-now-btn">Book Now</a>
+                     <a href="family_booking.php?destination=Cebu" class="book-now-btn">Book Now</a>
                 </div>
             </article>
         </div>

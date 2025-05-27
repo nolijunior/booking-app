@@ -1,3 +1,56 @@
+<?php  
+session_start();
+require_once("config/db.php");
+
+$error = "";
+
+// Check if user is logged in
+if (!isset($_SESSION['email'])) {
+    $destination = isset($_GET['destination']) ? urlencode($_GET['destination']) : '';
+    header("Location: login.php?destination=$destination");
+    exit();
+}
+
+// Get destination from URL
+$destination = isset($_GET['destination']) ? $_GET['destination'] : '';
+
+// Get user info from users table based on session email
+$email = $_SESSION['email'];
+$full_name = "";
+
+$stmt = $conn->prepare("SELECT full_name, email FROM users WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 1) {
+    $user = $result->fetch_assoc();
+    $full_name = $user['full_name'];
+} else {
+    $error = "User not found.";
+}
+$stmt->close();
+
+// Handle form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $travel_date = $_POST['date'];
+    $number_of_person = $_POST['person'];
+    $price = $_POST['price'];
+    $special_request = $_POST['request'];
+
+    $stmt = $conn->prepare("INSERT INTO bookings (full_name, email, destination, travel_date, number_of_person, price, special_request) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("ssssiis", $full_name, $email, $destination, $travel_date, $number_of_person, $price, $special_request);
+
+    if ($stmt->execute()) {
+        header("Location: payment.php?destination=" . urlencode($destination));
+        exit();
+    } else {
+        $error = "Booking failed. Please try again.";
+    }
+
+    $stmt->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -245,19 +298,20 @@
         </div>
 
         <!-- Booking Form -->
-        <form class="booking-form" action="process-booking.php" method="POST">
+        <form class="booking-form" action="romance_booking.php?destination=<?php echo urlencode($destination); ?>" method="POST">
+
             <input type="hidden" name="package" value="Romance & Honeymoon">
             <div class="form-group">
         <label for="name">Full Name</label>
-        <input type="text" id="fullname" name="fullname" value="" disabled>
+       <input type="text" value="<?php echo htmlspecialchars($full_name); ?>" readonly class="readonly">
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" value="" disabled>
+        <input type="text" value="<?php echo htmlspecialchars($email); ?>" readonly class="readonly">
     </div>
      <div class="form-group">
       <label for="destination">Destination</label>
-        <input type="text" id="destination" name="destination" placeholder="Enter destination" required>
+        <input type="text" value="<?php echo htmlspecialchars($destination); ?>" readonly class="readonly">
     </div>
     <div class="form-group">
         <label for="date">Preferred Travel Date</label>

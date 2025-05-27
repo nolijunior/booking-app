@@ -1,3 +1,48 @@
+<?php
+session_start();
+require_once("config/db.php");
+
+// Redirect to login if not logged in
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$destination = $_GET['destination'] ?? '';
+
+// Get user info from session
+$email = $_SESSION['email'];
+$full_name = "";
+$user_id = 0;
+
+// Fetch user details from database
+$stmt = $conn->prepare("SELECT user_id, full_name FROM users WHERE email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$result = $stmt->get_result();
+
+if ($result->num_rows === 1) {
+    $user = $result->fetch_assoc();
+    $user_id = $user['user_id'];
+    $full_name = $user['full_name'];
+} else {
+    die("User not found.");
+}
+$stmt->close();
+
+// Handle booking form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $destinationPost = urldecode($_GET['destination']);
+    $travel_date = $_POST['date'] ?? '';
+    $number_of_person = intval($_POST['persons'] ?? 0);
+    $price_per_person = floatval($_POST['price'] ?? 0);
+    $special_request = trim($_POST['request'] ?? '');
+    $total_price = $price_per_person * $number_of_person;
+    //var_dump($_POST,$destinationPost);
+    
+    header("Location: payment.php?destination=" . $destinationPost . "&travel_date=" . $travel_date . "&number_of_person=".$number_of_person."&special_request=".$special_request."&total_price=".$total_price);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -223,7 +268,10 @@
         <!-- Booking Details -->
         <div class="booking-details">
             <h2>Adventure & Exploration</h2>
-            <div class="price">₱7,999 per person</div>
+            
+            <?php $pricePerPerson = 7999; ?>
+            <div class="price">₱<?php echo number_format($pricePerPerson, 2);?> per person</div>
+
             <div class="duration">3 Days, 2 Nights</div>
             <p class="description">
                 Embark on an unforgettable journey with our Adventure & Exploration package. Designed for thrill-seekers and nature lovers, this package offers heart-pumping activities and breathtaking landscapes. Experience the excitement of outdoor adventures, guided expeditions, and the beauty of untouched nature.
@@ -244,19 +292,18 @@
         </div>
 
         <!-- Booking Form -->
-       <form class="booking-form" action="process-booking.php" method="POST">
-    <input type="hidden" name="package" value="Adventure & Exploration">
+       <form class="booking-form" action="adventure_booking.php?destination=<?php echo urlencode($destination); ?>" method="POST">
     <div class="form-group">
         <label for="name">Full Name</label>
-        <input type="text" id="fullname" name="fullname" value="" disabled>
+        <input type="text" value="<?php echo htmlspecialchars($full_name); ?>" readonly class="readonly" disabled>
     </div>
     <div class="form-group">
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" value="" disabled>
+        <input type="email" value="<?php echo htmlspecialchars($email); ?>" readonly class="readonly" disabled>
     </div>
      <div class="form-group">
       <label for="destination">Destination</label>
-        <input type="text" id="destination" name="destination" placeholder="" disabled>
+        <input type="text" value="<?php echo htmlspecialchars($destination); ?>" readonly class="readonly" disabled>
     </div>
     <div class="form-group">
         <label for="date">Preferred Travel Date</label>
@@ -268,9 +315,10 @@
     </div>
     <div class="form-group">
         <label for="notes">Special Requests</label>
-        <textarea id="notes" name="notes" placeholder="Any special requests or notes (e.g., dietary restrictions, allergies, etc.)"></textarea>
+        <textarea id="request" name="request" placeholder="Any special requests or notes (e.g., dietary restrictions, allergies, etc.)"></textarea>
     </div>
     <button type="submit" class="form-submit">Book</button>
+        <input type="hidden" name="price" value="<?php echo $pricePerPerson?>">
      <script>
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();

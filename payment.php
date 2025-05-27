@@ -1,3 +1,66 @@
+<?php
+session_start();
+require_once("config/db.php");
+
+if (!isset($_SESSION['email'])) {
+    header("Location: login.php");
+    exit();
+}
+
+$email = $_SESSION['email'];
+$destination = isset($_GET['destination']) ? $_GET['destination'] : '';
+$totalPrice = isset($_GET['total_price']) ? $_GET['total_price'] : 0;
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // var_dump($_POST);
+    // var_dump($_GET);
+    
+    $stmt1 = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt1->bind_param("s", $email);
+    $stmt1->execute();
+    $users = $stmt1->get_result()->fetch_assoc();
+    // var_dump($users['user_id']);
+    $stmt1->close();
+    
+    $userId = $users['user_id'] ?? null;
+
+    $card_name = $_POST['card-name'] ?? '';
+    $card_number = $_POST['card-number'] ?? '';
+    $expiry = $_POST['expiry'] ?? '';
+    $cvv = $_POST['cvv'] ?? '';
+
+    $destination = $_GET['destination'] ?? '';
+    $travel_date = $_GET['travel_date'] ?? '';
+    $number_of_person = $_GET['number_of_person'] ?? 0;
+    $special_request = $_GET['special_request'] ?? '';
+    $total_price = $_GET['total_price'] ?? 0;
+
+    $stmt = $conn->prepare("INSERT INTO bookings (user_id, destination, travel_date, number_of_person, special_request, price, card_name, card_number, card_expiry, card_cvv, payment_status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)");
+$stmt->bind_param(
+    "isssssssss",
+    $userId,
+    $destination,
+    $travel_date,
+    $number_of_person,
+    $special_request,
+    $total_price,
+    $card_name,
+    $card_number,
+    $expiry,
+    $cvv
+);
+
+    if ($stmt->execute()) {        
+         // give me a alert success message and redirect to index page
+        echo "<script>alert('Payment successful! Your booking has been recorded.'); window.location.href='index.php';</script>";
+
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -129,10 +192,10 @@
     <main>
         <div class="payment-details">
             <h2>Pay for Your Booking</h2>
-            <div class="amount">Total: </div>
+            <div class="amount">Total: ₱<?php echo number_format($totalPrice, 2); ?></div>
             <p>Thank you for booking with us! Please complete your payment to confirm your reservation.</p>
         </div>
-        <form class="payment-form">
+        <form class="payment-form" method="POST" action="">
             <div class="form-group">
                 <label for="card-name">Name on Card</label>
                 <input type="text" id="card-name" name="card-name" placeholder="Enter name on card" required>
@@ -154,6 +217,13 @@
                 <a href="destinations.php" class="form-submit">Cancel</a>
             </div>
         </form>
+        <script>
+            document.querySelector('.payment-form').addEventListener('submit', function(event) {
+                if (!confirm('Are you sure you want to proceed with the payment?')) {
+                    event.preventDefault();
+                }
+            });
+              </script>
     </main>
 </body>
 </html>

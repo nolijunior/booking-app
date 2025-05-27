@@ -140,64 +140,41 @@ header {
 }
 #menu-icon { display: none; }
 
-/* Dropdown Styles */
-        .navbar ul li.dropdown {
-            position: relative;
-        }
-        .dropdown-toggle {
-            cursor: pointer;
-            color: #34495e;
-            font-weight: 600;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: color 0.3s;
-            padding: 0.5rem 0;
-            user-select: none;
-        }
-        .dropdown-toggle:hover {
-            color: #e67e22;
-        }
-        .dropdown-menu {
+.dropdown-content {
             display: none;
             position: absolute;
-            top: 2.2rem;
+            top: 100%;
             left: 0;
-            min-width: 140px;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255,255,255,0.98);
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(44,62,80,0.13);
+            z-index: 200;
             border-radius: 0.7rem;
-            box-shadow: 0 8px 32px rgba(44,62,80,0.1);
-            z-index: 1002;
-            flex-direction: column;
-            padding: 0.5rem 0;
-            animation: fadeInDropdown 0.35s cubic-bezier(.39,.575,.565,1) both;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            padding: 0;
         }
-        .dropdown-menu li {
-            width: 100%;
-        }
-        .dropdown-menu li a {
+        .dropdown.show .dropdown-content {
             display: block;
-            width: 100%;
-            padding: 0.7rem 1.2rem;
-            color: #34495e;
-            background: none;
-            border: none;
+        }
+        .dropdown-content li {
+            padding: 0;
+            margin: 0;
             text-align: left;
+        }
+        .dropdown-content li a {
+            color: #34495e;
+            padding: 0.9rem 1.2rem;
             text-decoration: none;
+            display: block;
             font-weight: 500;
             font-size: 1rem;
             transition: background 0.2s, color 0.2s;
-            border-radius: 0.5rem;
         }
-        .dropdown-menu li a:hover {
-            background: #f6f6f6;
+        .dropdown-content li a:hover {
+            background: #ffe5c6;
             color: #e67e22;
         }
-        @keyframes fadeInDropdown {
-            0% { opacity: 0; transform: translateY(-10px);}
-            100% { opacity: 1; transform: translateY(0);}
-        }        
 /* Section titles */
 section h2 {
     font-family: 'Paytone One', sans-serif;
@@ -249,53 +226,6 @@ section h2 {
 
 /* Contact Form */
 .contact-form,
-.faq {
-    background: none !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
-    padding: 0 1.5rem;
-    margin: 3rem auto 3rem auto;
-    max-width: 700px;
-}
-
-.faq {
-    max-width: 1140px;
-    margin: 3rem auto 5rem auto;
-}
-
-/* Keep the rest of the FAQ readable and clean */
-.faq dl {
-    color: #222 !important;
-    font-size: 1.08rem;
-    line-height: 1.7;
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0;
-}
-
-.faq dt {
-    color: #e67e22 !important;
-    font-weight: 700;
-    font-size: 1.08rem;
-    margin-bottom: 0.5rem;
-    cursor: pointer;
-    transition: color 0.2s;
-    letter-spacing: 0.5px;
-    background: none;
-}
-
-.faq dd {
-    color: #222 !important;
-    background: none;
-    border-left: 3px solid #f6b93b;
-    border-radius: 0;
-    margin-bottom: 1.5rem;
-    padding: 0.75rem 1rem 0.75rem 1.25rem;
-    font-weight: 400;
-    box-shadow: none;
-}
-
 /* Contact form inputs/buttons remain classy and minimalist */
 .contact-form form {
     display: flex;
@@ -362,8 +292,37 @@ section h2 {
 }
 
 /* FAQ content styling */
+.faq {
+    background: #f9f9f9; /* Match contact-info .info-card background */
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(230,126,34,0.1); /* Match contact-info .info-card shadow */
+    padding: 2rem;
+    margin: 3rem auto 5rem auto;
+    max-width: 1140px;
+}
+
+/* FAQ content styling */
 .faq dl {
-    color: #222 !important;
+    color: #222; /* Match body text color for readability */
+    font-size: 1.08rem;
+    line-height: 1.7;
+    padding: 0;
+    margin: 0;
+}
+
+/* FAQ Section - Consistent Container Box */
+.faq {
+    background: #f9f9f9;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(230,126,34,0.1);
+    padding: 2rem;
+    margin: 3rem auto 5rem auto;
+    max-width: 1140px;
+}
+
+/* FAQ content styling */
+.faq dl {
+    color: #222;
     font-size: 1.08rem;
     line-height: 1.7;
     padding: 0;
@@ -372,7 +331,7 @@ section h2 {
 
 /* FAQ Question */
 .faq dt {
-    color: #e67e22 !important;
+    color: #e67e22;
     font-weight: 700;
     font-size: 1.08rem;
     margin-bottom: 0.5rem;
@@ -383,69 +342,12 @@ section h2 {
 
 /* FAQ Answer */
 .faq dd {
-    color: #222 !important;
+    color: #222;
     border-left: 3px solid #f6b93b;
     margin-bottom: 1.5rem;
     padding: 0.75rem 1rem 0.75rem 1.25rem;
     font-weight: 400;
 }
-
-/* Newsletter */
-.newsletter {
-    background: rgba(255,255,255,0.93);
-    border-radius: 1.2rem;
-    max-width: 700px;
-    margin: 3rem auto 2rem auto;
-    padding: 2rem 1.5rem;
-    box-shadow: 0 8px 24px rgba(230,126,34,0.07);
-    text-align: center;
-    animation: fadeInUp 1.8s;
-}
-.news-text h2 {
-    font-family: 'Paytone One', sans-serif;
-    color: #e67e22;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-}
-.news-text p {
-    color: #34495e;
-    font-size: 1.1rem;
-    margin-bottom: 1.2rem;
-}
-.newsletter-form {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-}
-.newsletter-form input[type="email"] {
-    padding: 0.75rem 1rem;
-    border-radius: 2rem;
-    border: 1px solid #ddd;
-    font-size: 1rem;
-    background: #f7f7f7;
-    transition: border-color 0.3s, box-shadow 0.3s;
-}
-.newsletter-form input[type="email"]:focus {
-    border-color: #e67e22;
-    box-shadow: 0 0 8px rgba(230,126,34,0.18);
-    outline: none;
-}
-.newsletter-form button {
-    background: #e67e22;
-    color: #fff;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 2rem;
-    cursor: pointer;
-    transition: background 0.3s, transform 0.2s;
-}
-.newsletter-form button:hover {
-    background: #b85c00;
-    transform: translateY(-2px) scale(1.04);
-}
-
 /* Footer */
 footer {
     background: rgba(255,255,255,0.95);
@@ -542,17 +444,38 @@ footer {
 
     <!-- Header -->
      <header>
-        <a href="index.php" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
-        <div class="bx bx-menu" id="menu-icon" role="button" aria-label="Toggle menu"></div>
-        <nav class="navbar" aria-label="Main navigation">
-    <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="login.php">Account</a></li>
-        <li><a href="destinations.php">Destinations</a></li>
-        <li><a href="about_us.php">About</a></li>
-        <li><a href="contact_us.php" aria-current="page">Contact Us</a></li>
-    </ul>
-</nav>
+        <a href="index.php" class="logo">RoamHorizon</a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <nav class="navbar">
+        <nav class="navbar">
+        <ul>
+            <li><a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a></li>
+
+            <?php if (isset($_SESSION['email'])): ?>
+                <li class="dropdown" id="accountDropdown">
+                    <a class="user-account" onclick="toggleDropdown(event)">
+                        <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <ul class="dropdown-content">
+                        <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
+                            <?php echo htmlspecialchars($_SESSION['email']); ?>
+                        </li>
+                        <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
+                    </ul>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
+                        <i class='bx bx-log-in'></i> Login
+                    </a>
+                </li>
+            <?php endif; ?>
+
+            <li><a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a></li>
+            <li><a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a></li>
+            <li><a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a></li>
+        </ul>
+    </nav>
     </header>
 
     <!-- Contact Info Section -->
@@ -603,44 +526,23 @@ footer {
 
 
 <!-- FAQ Section -->
-<section class="faq" aria-labelledby="faq-title" style="max-width: 1140px; margin: 3rem auto 5rem auto;">
+<section class="faq" aria-labelledby="faq-title">
     <h2 id="faq-title" style="font-family: 'Paytone One', sans-serif; font-size: 2.2rem; color: #2c3e50; margin-bottom: 2rem; text-align: center; letter-spacing: 1px;">
         Frequently Asked Questions
     </h2>
-    <dl style="color: #bbbbbb; font-size: 1.08rem; line-height: 1.7;">
-        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
-            How do I book a tour with RoamHorizon?
-        </dt>
-        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
-            You can book a tour by browsing our Packages page and clicking the "Book Now" button on your chosen package. Fill out the booking form and our team will contact you for confirmation.
-        </dd>
-        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
-            What payment methods do you accept?
-        </dt>
-        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
-            We accept bank transfers, GCash, and selected credit/debit cards. Details will be provided once your booking is confirmed.
-        </dd>
-        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
-            Can I customize my travel package?
-        </dt>
-        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
-            Yes! We offer customizable travel experiences. Contact us with your preferences and we’ll create a personalized itinerary for you.
-        </dd>
-        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
-            What is your cancellation policy?
-        </dt>
-        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
-            Cancellations made 7 days before the scheduled trip are eligible for a full refund. Later cancellations may incur charges. Please see our Terms & Conditions for full details.
-        </dd>
-        <dt style="color: #e67e22; font-weight: 700; font-size: 1.08rem; margin-bottom: 0.5rem; cursor: pointer; letter-spacing: 0.5px;">
-            How can I contact customer support?
-        </dt>
-        <dd style="color: #bbbbbb; border-left: 3px solid #f6b93b; margin-bottom: 1.5rem; padding: 0.75rem 1rem 0.75rem 1.25rem;">
-            You may call us at +63 992 473 0763 or email info@roamhorizon.com. Our team is available Monday to Saturday to assist you.
-        </dd>
+    <dl>
+        <dt>How do I book a tour with RoamHorizon?</dt>
+        <dd>You can book a tour by browsing our Packages page and clicking the "Book Now" button on your chosen package. Fill out the booking form and our team will contact you for confirmation.</dd>
+        <dt>What payment methods do you accept?</dt>
+        <dd>We accept bank transfers, GCash, and selected credit/debit cards. Details will be provided once your booking is confirmed.</dd>
+        <dt>Can I customize my travel package?</dt>
+        <dd>Yes! We offer customizable travel experiences. Contact us with your preferences and we’ll create a personalized itinerary for you.</dd>
+        <dt>What is your cancellation policy?</dt>
+        <dd>Cancellations made 7 days before the scheduled trip are eligible for a full refund. Later cancellations may incur charges. Please see our Terms & Conditions for full details.</dd>
+        <dt>How can I contact customer support?</dt>
+        <dd>You may call us at +63 992 473 0763 or email info@roamhorizon.com. Our team is available Monday to Saturday to assist you.</dd>
     </dl>
 </section>
-
     <!-- Footer -->
     <footer id="contact" aria-labelledby="footer-title">
         <div class="footer">
@@ -695,27 +597,22 @@ footer {
             <p>RoamHorizon Travels <br> Copyright @2024 All Rights Reserved</p>
         </div>
     </footer>
-    <!-- Dropdown JS (at end of body) -->
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const dropdownToggle = document.querySelector('.dropdown-toggle');
-        const dropdownMenu = document.querySelector('.dropdown-menu');
+    <!-- JavaScript to toggle dropdown -->
+<script>
+function toggleDropdown(event) {
+    event.preventDefault();
+    event.stopPropagation();
 
-        // Always hide dropdown on page load
-        dropdownMenu.style.display = 'none';
+    const dropdown = document.getElementById('accountDropdown');
+    dropdown.classList.toggle('show');
+}
 
-        dropdownToggle.addEventListener('click', function(event) {
-            event.stopPropagation();
-            dropdownMenu.style.display = dropdownMenu.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(event) {
-            if (!event.target.closest('.dropdown')) {
-                dropdownMenu.style.display = 'none';
-            }
-        });
-    });
-    </script>
+document.addEventListener('click', function (e) {
+    const dropdown = document.getElementById('accountDropdown');
+    if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('show');
+    }
+});
+</script>
 </body>
 </html>

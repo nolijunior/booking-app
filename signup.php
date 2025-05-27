@@ -1,3 +1,51 @@
+<?php session_start(); ?>
+<?php
+require_once("config/db.php");
+
+$error = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Get and sanitize form data
+    $full_name = trim($_POST['fullname'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $contact_number = trim($_POST['contact'] ?? '');
+    $password = $_POST['password'] ?? '';
+    $confirm_password = $_POST['confirm-password'] ?? '';
+
+    // Basic validation
+    if (!$full_name || !$email || !$contact_number || !$password || !$confirm_password) {
+        $error = "Please fill in all fields.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $error = "Please enter a valid email address.";
+    } elseif ($password !== $confirm_password) {
+        $error = "Passwords do not match.";
+    } else {
+        // Check if email already exists (using prepared statement)
+        $stmt_check = $conn->prepare("SELECT * FROM users WHERE email = ? LIMIT 1");
+        $stmt_check->bind_param("s", $email);
+        $stmt_check->execute();
+        $result = $stmt_check->get_result();
+
+        if ($result && $result->num_rows > 0) {
+            $error = "Email is already registered.";
+        } else {
+            // Insert new user (password as plain text)
+            $stmt = $conn->prepare("INSERT INTO users (full_name, email, contact_number, password) VALUES (?, ?, ?, ?)");
+            $stmt->bind_param("ssss", $full_name, $email, $contact_number, $password);
+
+            if ($stmt->execute()) {
+                $_SESSION['user_email'] = $email;
+                header("Location: index.php");
+                exit;
+            } else {
+                $error = "Registration failed. Please try again.";
+            }
+            $stmt->close();
+        }
+        $stmt_check->close();
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -227,13 +275,16 @@ footer {
 
   </style>
   <header>
-    <a href="index.html" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
+    <a href="index.php" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
   </header>
 
   <section class="signup-section" aria-labelledby="signup-title">
     <div class="signup-container">
       <h2 id="signup-title">Create Your Account</h2>
-      <form class="signup-form" novalidate>
+      <?php if ($error): ?>
+        <div style="color: red; margin-bottom: 1rem;"><?= htmlspecialchars($error) ?></div>
+         <?php endif; ?>
+        <form class="signup-form" method="POST" action="signup.php">
         <div class="form-group">
           <label for="fullname">Full Name</label>
           <input

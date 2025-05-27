@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -59,6 +60,13 @@
             display: flex;
             gap: 2rem;
             align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar ul li {
+            position: relative;
+            margin: 0;
+            padding: 0;
         }
         .navbar ul li a {
             color: #34495e;
@@ -88,7 +96,59 @@
             width: 100%;
         }
         #menu-icon { display: none; }
-        /* Home Section */
+
+        /* --- Dropdown Fix --- */
+        .dropdown {
+            position: relative;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(255,255,255,0.98);
+            min-width: 180px;
+            box-shadow: 0 8px 24px rgba(44,62,80,0.13);
+            z-index: 200;
+            border-radius: 0.7rem;
+            overflow: hidden;
+            margin-top: 0.5rem;
+            padding: 0;
+        }
+        .dropdown.show .dropdown-content {
+            display: block;
+        }
+        /* DO NOT ADD ANY HOVER EFFECT! */
+        .dropdown-content li {
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        .dropdown-content li a {
+            color: #34495e;
+            padding: 0.9rem 1.2rem;
+            text-decoration: none;
+            display: block;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .dropdown-content li a:hover {
+            background: #ffe5c6;
+            color: #e67e22;
+        }
+        .user-account {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #34495e;
+        }
+        .user-account i {
+            font-size: 1.1rem;
+        }
+        /* ...rest of your CSS... */
         .home {
             padding: 7rem 2rem 5rem;
             text-align: center;
@@ -197,19 +257,44 @@
 <body>
     <!-- Header -->
     <header>
-        <a href="index.php" class="logo" aria-label="RoamHorizon Home">RoamHorizon</a>
-        <div class="bx bx-menu" id="menu-icon" role="button" aria-label="Toggle menu"></div>
-        <nav class="navbar" aria-label="Main navigation">
+        <a href="index.php" class="logo">RoamHorizon</a>
+        <div class="bx bx-menu" id="menu-icon"></div>
+        <nav class="navbar">
             <ul>
-                <li><a href="index.php" aria-current="page">Home</a></li>
-                <li><a href="login.php">Account</a></li>
-                <li><a href="destinations.php">Destinations</a></li>
-                <li><a href="about_us.php">About</a></li>
-                <li><a href="contact_us.php">Contact Us</a></li>
+                <li>
+                    <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
+                </li>
+                <?php if (isset($_SESSION['email'])): ?>
+                    <li class="dropdown" id="accountDropdown">
+                        <a href="#" class="user-account" onclick="toggleDropdown(event)">
+                            <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
+                        </a>
+                        <ul class="dropdown-content">
+                            <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
+                                <?php echo htmlspecialchars($_SESSION['email']); ?>
+                            </li>
+                            <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
+                        </ul>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
+                            <i class='bx bx-log-in'></i> Login
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <li>
+                    <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+                </li>
+                <li>
+                    <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
+                </li>
+                <li>
+                    <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
+                </li>
             </ul>
         </nav>
     </header>
-
     <!-- Home Section -->
     <section class="home" id="home" aria-labelledby="home-title">
         <div class="home-text">
@@ -218,7 +303,6 @@
             <a href="destinations.php" class="home-btn" aria-label="Start your journey">Your Journey Starts Now</a>
         </div>
     </section>
-
     <!-- Footer -->
     <footer id="contact" aria-labelledby="footer-title">
         <div class="footer">
@@ -227,10 +311,10 @@
                     <h4 id="footer-title">Quick Links</h4>
                     <ul>
                         <li><a href="about_us.php" target="_blank" rel="noopener noreferrer">About Us</a></li>
-                        <li><a href="terms_conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
-                        <li><a href="privacy_policy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
+                        <li><a href="terms-conditions.php" target="_blank" rel="noopener noreferrer">Terms & Conditions</a></li>
+                        <li><a href="privacypolicy.php" target="_blank" rel="noopener noreferrer">Privacy Policy</a></li>
                         <li><a href="help.php" target="_blank" rel="noopener noreferrer">Help</a></li>
-                        <li><a href="destinations.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
+                        <li><a href="packages.php" target="_blank" rel="noopener noreferrer">Tour</a></li>
                     </ul>
                 </div>
                 <div class="list">
@@ -273,5 +357,20 @@
             <p>RoamHorizon Travels <br> Copyright @2024 All Rights Reserved</p>
         </div>
     </footer>
+    <!-- JavaScript to toggle dropdown -->
+    <script>
+    function toggleDropdown(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        const dropdown = document.getElementById('accountDropdown');
+        dropdown.classList.toggle('show');
+    }
+    document.addEventListener('click', function (e) {
+        const dropdown = document.getElementById('accountDropdown');
+        if (dropdown && !dropdown.contains(e.target)) {
+            dropdown.classList.remove('show');
+        }
+    });
+    </script>
 </body>
 </html>
