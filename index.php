@@ -264,7 +264,7 @@
                 <li>
                     <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
                 </li>
-                <?php if (isset($_SESSION['email'])): ?>
+                <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
                     <li class="dropdown" id="accountDropdown">
                         <a href="#" class="user-account" onclick="toggleDropdown(event)">
                             <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
@@ -300,7 +300,7 @@
         <div class="home-text">
             <h1 id="home-title">RoamHorizon<br>Travels</h1>
             <p>We turn your travel dreams into reality, creating personalized travel experiences that go beyond the ordinary.</p>
-            <a href="destinations.php" class="home-btn" aria-label="Start your journey">Your Journey Starts Now</a>
+            <a href="login.php" class="home-btn" aria-label="Start your journey">Your Journey Starts Now</a>
         </div>
     </section>
     <!-- Footer -->

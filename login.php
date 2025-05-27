@@ -21,16 +21,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       $user = $result->fetch_assoc();
 
       if ($password === $user['password']) {
-        $_SESSION['email'] = $user['email'];
 
         // Redirect logic with destination
         if ($user['email'] === 'admin@admin.com') {
           echo "<script>window.location.href = 'admin/dashboard.php';</script>";
-        } elseif (isset($_SESSION['selected_destination'])) {
-          $dest = urlencode($_SESSION['selected_destination']);
-          unset($_SESSION['selected_destination']); // clear it from session after redirect
-          echo "<script>window.location.href = 'adventure_booking.php?destination=$dest';</script>";
+            $_SESSION['email'] = "admin@admin.com";
         } else {
+            $_SESSION['email'] = $user['email'];
           echo "<script>window.location.href = 'index.php';</script>";
         }
         exit;
@@ -142,7 +139,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       animation: fadeInScale 0.8s ease forwards;
     }
     .login-container h2 {
-      position: center;
+      text-align: center;
       font-family: 'Paytone One', sans-serif;
       font-size: 2.5rem;
       margin-bottom: 1.5rem;
@@ -211,14 +208,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <body>
   <header>
     <a href="index.php" class="logo">RoamHorizon</a>
-    <nav class="navbar">
-      <ul>
-        <li><a href="index.php">Home</a></li>
-        <li><a href="destinations.php">Destinations</a></li>
-        <li><a href="about_us.php">About Us</a></li>
-        <li><a href="contact_us.php">Contact</a></li>
-      </ul>
-    </nav>
   </header>
 
   <section class="login">

@@ -3,7 +3,7 @@ session_start();
 require_once("config/db.php");
 
 // Redirect to login if not logged in
-if (!isset($_SESSION['email'])) {
+if (!isset($_SESSION['email']) || $_SESSION['email'] === 'admin@admin.com') {
     header("Location: login.php");
     exit();
 }
@@ -326,3 +326,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         });
     </script>
 </form>
+    </body>
+    </html>

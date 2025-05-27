@@ -1,54 +1,46 @@
-<?php  
+<?php
 session_start();
 require_once("config/db.php");
 
-$error = "";
-
-// Check if user is logged in
-if (!isset($_SESSION['email'])) {
-    $destination = isset($_GET['destination']) ? urlencode($_GET['destination']) : '';
-    header("Location: login.php?destination=$destination");
+// Redirect to login if not logged in
+if (!isset($_SESSION['email']) || $_SESSION['email'] === 'admin@admin.com') {
+    header("Location: login.php");
     exit();
 }
 
-// Get destination from URL
-$destination = isset($_GET['destination']) ? $_GET['destination'] : '';
+$destination = $_GET['destination'] ?? '';
 
-// Get user info from users table based on session email
+// Get user info from session
 $email = $_SESSION['email'];
 $full_name = "";
+$user_id = 0;
 
-$stmt = $conn->prepare("SELECT full_name, email FROM users WHERE email = ?");
+// Fetch user details from database
+$stmt = $conn->prepare("SELECT user_id, full_name FROM users WHERE email = ?");
 $stmt->bind_param("s", $email);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows === 1) {
     $user = $result->fetch_assoc();
+    $user_id = $user['user_id'];
     $full_name = $user['full_name'];
 } else {
-    $error = "User not found.";
+    die("User not found.");
 }
 $stmt->close();
 
-// Handle form submission
+// Handle booking form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $travel_date = $_POST['date'];
-    $number_of_person = $_POST['person'];
-    $price = $_POST['price'];
-    $special_request = $_POST['request'];
-
-    $stmt = $conn->prepare("INSERT INTO bookings (full_name, email, destination, travel_date, number_of_person, price, special_request) VALUES (?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssiis", $full_name, $email, $destination, $travel_date, $number_of_person, $price, $special_request);
-
-    if ($stmt->execute()) {
-        header("Location: payment.php?destination=" . urlencode($destination));
-        exit();
-    } else {
-        $error = "Booking failed. Please try again.";
-    }
-
-    $stmt->close();
+    $destinationPost = urldecode($_GET['destination']);
+    $travel_date = $_POST['date'] ?? '';
+    $number_of_person = intval($_POST['persons'] ?? 0);
+    $price_per_person = floatval($_POST['price'] ?? 0);
+    $special_request = trim($_POST['request'] ?? '');
+    $total_price = $price_per_person * $number_of_person;
+    //var_dump($_POST,$destinationPost);
+    
+    header("Location: payment.php?destination=" . $destinationPost . "&travel_date=" . $travel_date . "&number_of_person=".$number_of_person."&special_request=".$special_request."&total_price=".$total_price);
 }
 ?>
 <!DOCTYPE html>
@@ -181,7 +173,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Booking Details -->
         <div class="booking-details">
             <h2>Family Fun & Relaxation</h2>
-            <div class="price">₱9,999 per family</div>
+            
+            <?php $pricePerPerson = 30999; ?>
+            <div class="price">₱<?php echo number_format($pricePerPerson, 2);?> per family</div>
+
             <div class="duration">3 Days, 2 Nights</div>
             <p class="description">
                 Create unforgettable memories with your family. Enjoy quality time together with fun activities, relaxing accommodations, and kid-friendly adventures. Perfect for families who want to unwind and bond in a beautiful setting.
@@ -201,41 +196,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
         </div>
 
-        <!-- Booking Form -->
-        <form class="booking-form" action="family_booking.php?destination=<?php echo urlencode($destination); ?>" method="POST">
-
-            <input type="hidden" name="package" value="Family Fun & Relaxation">
-            <div class="form-group">
-                <label for="name">Full Name</label>
-                <input type="text" value="<?php echo htmlspecialchars($full_name); ?>" readonly class="readonly">
-            </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="text" value="<?php echo htmlspecialchars($email); ?>" readonly class="readonly">
-            </div>
-           <div class="form-group">
+       <!-- Booking Form -->
+       <form class="booking-form" action="family_booking.php?destination=<?php echo urlencode($destination); ?>" method="POST">
     <div class="form-group">
-      <label for="destination">Destination</label>
-        <input type="text" value="<?php echo htmlspecialchars($destination); ?>" readonly class="readonly">
+        <label for="name">Full Name</label>
+        <input type="text" value="<?php echo htmlspecialchars($full_name); ?>" readonly class="readonly" disabled>
     </div>
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
-            </div>
-            <div class="form-group">
-                <label for="date">Preferred Travel Date</label>
-                <input type="date" id="date" name="date" required>
-            </div>
-            <div class="form-group">
-                <label for="persons">Number of Persons</label>
-                <input type="number" id="persons" name="persons" min="1" placeholder="How many people?" required>
-            </div>
-            <div class="form-group">
-                <label for="notes">Special Requests</label>
-                <textarea id="notes" name="notes" placeholder="Any special requests or notes (e.g., dietary restrictions, allergies, etc.)"></textarea>
-            </div>
-            <button type="submit" class="form-submit">Book</button>
-             <script>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" value="<?php echo htmlspecialchars($email); ?>" readonly class="readonly" disabled>
+    </div>
+     <div class="form-group">
+      <label for="destination">Destination</label>
+        <input type="text" value="<?php echo htmlspecialchars($destination); ?>" readonly class="readonly" disabled>
+    </div>
+    <div class="form-group">
+        <label for="date">Preferred Travel Date</label>
+        <input type="date" id="date" name="date" required>
+    </div>
+    <div class="form-group">
+        <label for="persons">Number of Persons</label>
+        <input type="number" id="persons" name="persons" min="1" placeholder="How many people?" required>
+    </div>
+    <div class="form-group">
+        <label for="notes">Special Requests</label>
+        <textarea id="request" name="request" placeholder="Any special requests or notes (e.g., dietary restrictions, allergies, etc.)"></textarea>
+    </div>
+    <button type="submit" class="form-submit">Book</button>
+        <input type="hidden" name="price" value="<?php echo $pricePerPerson?>">
+     <script>
         document.getElementById('bookingForm').addEventListener('submit', function(e) {
             e.preventDefault();
             window.location.href = 'payment.php';

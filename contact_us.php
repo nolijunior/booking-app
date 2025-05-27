@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php
 require_once("config/db.php");
 
@@ -443,39 +444,44 @@ footer {
 <body>
 
     <!-- Header -->
-     <header>
+    <header>
         <a href="index.php" class="logo">RoamHorizon</a>
-    <div class="bx bx-menu" id="menu-icon"></div>
-    <nav class="navbar">
+        <div class="bx bx-menu" id="menu-icon"></div>
         <nav class="navbar">
-        <ul>
-            <li><a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a></li>
-
-            <?php if (isset($_SESSION['email'])): ?>
-                <li class="dropdown" id="accountDropdown">
-                    <a class="user-account" onclick="toggleDropdown(event)">
-                        <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
-                    </a>
-                    <ul class="dropdown-content">
-                        <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
-                            <?php echo htmlspecialchars($_SESSION['email']); ?>
-                        </li>
-                        <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
-                    </ul>
-                </li>
-            <?php else: ?>
+            <ul>
                 <li>
-                    <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
-                        <i class='bx bx-log-in'></i> Login
-                    </a>
+                    <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
                 </li>
-            <?php endif; ?>
-
-            <li><a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a></li>
-            <li><a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a></li>
-            <li><a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a></li>
-        </ul>
-    </nav>
+                <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
+                    <li class="dropdown" id="accountDropdown">
+                        <a href="#" class="user-account" onclick="toggleDropdown(event)">
+                            <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
+                        </a>
+                        <ul class="dropdown-content">
+                            <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
+                                <?php echo htmlspecialchars($_SESSION['email']); ?>
+                            </li>
+                            <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
+                        </ul>
+                    </li>
+                <?php else: ?>
+                    <li>
+                        <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
+                            <i class='bx bx-log-in'></i> Login
+                        </a>
+                    </li>
+                <?php endif; ?>
+                <li>
+                    <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+                </li>
+                <li>
+                    <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
+                </li>
+                <li>
+                    <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
+                </li>
+            </ul>
+        </nav>
     </header>
 
     <!-- Contact Info Section -->
