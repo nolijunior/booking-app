@@ -11,10 +11,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@300;400;600&display=swap');
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('img/background12.jpg') no-repeat center center fixed;
+            background: url('img/background16.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             color: #2c3e50;
@@ -33,7 +37,7 @@
         }
         header {
             background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
             padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
@@ -54,7 +58,9 @@
             font-weight: 700;
             user-select: none;
         }
-        .logo:hover { color: #e67e22; }
+        .logo:hover {
+            color: #e67e22;
+        }
         .navbar ul {
             list-style: none;
             display: flex;
@@ -95,20 +101,41 @@
         .navbar ul li a[aria-current="page"]::after {
             width: 100%;
         }
-        #menu-icon { display: none; }
-
-        /* --- Dropdown Fix --- */
+        #menu-icon {
+            display: none;
+        }
+        /* Dropdown Styles */
         .dropdown {
             position: relative;
+            display: inline-block;
+        }
+        .user-account {
+            background: none;
+            border: none;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            border-radius: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .user-account:hover {
+            color: #e67e22;
+            background: #ffe5c6;
         }
         .dropdown-content {
             display: none;
             position: absolute;
             top: 100%;
-            left: 0;
-            background: rgba(255,255,255,0.98);
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
             min-width: 180px;
-            box-shadow: 0 8px 24px rgba(44,62,80,0.13);
+            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.13);
             z-index: 200;
             border-radius: 0.7rem;
             overflow: hidden;
@@ -116,13 +143,17 @@
             padding: 0;
         }
         .dropdown.show .dropdown-content {
-            display: block;
+            display: block !important;
         }
-        /* DO NOT ADD ANY HOVER EFFECT! */
+        .user-account:hover + .dropdown-content,
+        .dropdown-content:hover {
+            display: none;
+        }
         .dropdown-content li {
             padding: 0;
             margin: 0;
             text-align: left;
+            list-style: none;
         }
         .dropdown-content li a {
             color: #34495e;
@@ -137,37 +168,41 @@
             background: #ffe5c6;
             color: #e67e22;
         }
-        .user-account {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            color: #34495e;
-        }
-        .user-account i {
-            font-size: 1.1rem;
-        }
-        /* ...rest of your CSS... */
         .home {
             padding: 7rem 2rem 5rem;
             text-align: center;
             max-width: 800px;
             margin: 0 auto;
             animation: fadeInUp 1s;
+            position: relative;
+            z-index: 2;
+        }
+        .home::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .hero-section {
+            position: relative;
         }
         .home-text h1 {
             font-family: 'Paytone One', sans-serif;
             font-size: 3.5rem;
-            color: #2c3e50;
+            color: #1A3C5A;
             margin-bottom: 1rem;
             letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             animation: fadeInDown 1s;
         }
         .home-text p {
-            color: #555f6e;
+            color: #F0F8FF;
             font-size: 1.2rem;
             margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             animation: fadeInUp 1.2s;
         }
         .home-btn {
@@ -180,7 +215,7 @@
             font-weight: 600;
             font-size: 1.1rem;
             transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 8px 24px rgba(230,126,34,0.15);
+            box-shadow: 0 8px 24px rgba(230, 126, 34, 0.15);
             animation: fadeInUp 1.4s;
         }
         .home-btn:hover {
@@ -188,20 +223,31 @@
             transform: translateY(-2px);
         }
         @keyframes fadeInUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         @keyframes fadeInDown {
-            0% { opacity: 0; transform: translateY(-30px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        /* Footer */
         footer {
             background: rgba(255, 255, 255, 0.95);
             padding: 3rem 2rem 2rem;
             font-size: 0.95rem;
             color: #34495e;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.07);
             border-radius: 1.5rem 1.5rem 0 0;
             user-select: none;
         }
@@ -230,7 +276,9 @@
             padding: 0.3rem 0;
             transition: color 0.3s;
         }
-        .list ul li a:hover { color: #e67e22; }
+        .list ul li a:hover {
+            color: #e67e22;
+        }
         .social a {
             font-size: 1.6rem;
             margin-right: 1.2rem;
@@ -255,52 +303,47 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <a href="index.php" class="logo">RoamHorizon</a>
-        <div class="bx bx-menu" id="menu-icon"></div>
-        <nav class="navbar">
-            <ul>
+<!-- Header -->
+<header>
+    <a href="index.php" class="logo">RoamHorizon</a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
+            </li>
+            <li>
+                <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+            </li>
+            <li>
+                <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
+            </li>
+            <li>
+                <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
+            </li>
+
+            <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
                 <li>
-                    <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
+                    <a href="logout.php">
+                        <i class='bx bx-log-out'></i> Logout
+                    </a>
                 </li>
-                <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
-                    <li class="dropdown" id="accountDropdown">
-                        <a href="#" class="user-account" onclick="toggleDropdown(event)">
-                            <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
-                        </a>
-                        <ul class="dropdown-content">
-                            <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
-                                <?php echo htmlspecialchars($_SESSION['email']); ?>
-                            </li>
-                            <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
-                        </ul>
-                    </li>
-                <?php else: ?>
-                    <li>
-                        <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
-                            <i class='bx bx-log-in'></i> Login
-                        </a>
-                    </li>
-                <?php endif; ?>
+            <?php else: ?>
                 <li>
-                    <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+                    <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
+                        <i class='bx bx-log-in'></i> Login
+                    </a>
                 </li>
-                <li>
-                    <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
-                </li>
-                <li>
-                    <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
     <!-- Home Section -->
     <section class="home" id="home" aria-labelledby="home-title">
         <div class="home-text">
             <h1 id="home-title">RoamHorizon<br>Travels</h1>
             <p>We turn your travel dreams into reality, creating personalized travel experiences that go beyond the ordinary.</p>
-            <a href="login.php" class="home-btn" aria-label="Start your journey">Your Journey Starts Now</a>
+            <a href="destinations.php" class="home-btn" aria-label="Start your journey">Your Journey Starts Now</a>
         </div>
     </section>
     <!-- Footer -->
@@ -357,20 +400,35 @@
             <p>RoamHorizon Travels <br> Copyright @2024 All Rights Reserved</p>
         </div>
     </footer>
-    <!-- JavaScript to toggle dropdown -->
     <script>
-    function toggleDropdown(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        const dropdown = document.getElementById('accountDropdown');
-        dropdown.classList.toggle('show');
-    }
-    document.addEventListener('click', function (e) {
-        const dropdown = document.getElementById('accountDropdown');
-        if (dropdown && !dropdown.contains(e.target)) {
-            dropdown.classList.remove('show');
+        document.addEventListener('DOMContentLoaded', function () {
+            const dropdown = document.getElementById('accountDropdown');
+            if (dropdown) {
+                dropdown.classList.remove('show');
+                console.log('Dropdown state reset on load');
+            }
+        });
+
+        function toggleDropdown(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            const dropdown = document.getElementById('accountDropdown');
+            if (dropdown) {
+                console.log('Toggling dropdown');
+                dropdown.classList.toggle('show');
+            }
         }
-    });
+
+        document.addEventListener('click', function (e) {
+            const dropdown = document.getElementById('accountDropdown');
+            const userAccountButton = dropdown ? dropdown.querySelector('.user-account') : null;
+            if (dropdown && userAccountButton) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('show');
+                    console.log('Dropdown closed by outside click');
+                }
+            }
+        });
     </script>
 </body>
 </html>

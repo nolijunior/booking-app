@@ -64,7 +64,7 @@ $conn->close();
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
     font-family: 'Poppins', sans-serif;
-    background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+    background: url('img/background22.jpg') no-repeat center center fixed;
     background-size: cover;
     color: #222;
     min-height: 100vh;
@@ -140,28 +140,56 @@ header {
     width: 100%;
 }
 #menu-icon { display: none; }
-
-.dropdown-content {
+.dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .user-account {
+            background: none;
+            border: none;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            border-radius: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .user-account:hover {
+            color: #e67e22;
+            background: #ffe5c6;
+        }
+        .dropdown-content {
             display: none;
             position: absolute;
             top: 100%;
-            left: 0;
+            right: 0; /* Changed from left to right to match index.php */
             background: rgba(255,255,255,0.98);
             min-width: 180px;
             box-shadow: 0 8px 24px rgba(44,62,80,0.13);
-            z-index: 200;
+            z-index: 1000; /* Increased z-index for consistency */
             border-radius: 0.7rem;
             overflow: hidden;
             margin-top: 0.5rem;
             padding: 0;
         }
         .dropdown.show .dropdown-content {
-            display: block;
+            display: block !important;
+        }
+        .user-account:hover + .dropdown-content,
+        .dropdown-content:hover {
+            display: none;
         }
         .dropdown-content li {
             padding: 0;
             margin: 0;
             text-align: left;
+            list-style: none;
         }
         .dropdown-content li a {
             color: #34495e;
@@ -442,48 +470,41 @@ footer {
     </style>
 </head>
 <body>
+<!-- Header -->
+<header>
+    <a href="index.php" class="logo">RoamHorizon</a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
+            </li>
+            <li>
+                <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+            </li>
+            <li>
+                <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
+            </li>
+            <li>
+                <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
+            </li>
 
-    <!-- Header -->
-    <header>
-        <a href="index.php" class="logo">RoamHorizon</a>
-        <div class="bx bx-menu" id="menu-icon"></div>
-        <nav class="navbar">
-            <ul>
+            <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
                 <li>
-                    <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
+                    <a href="logout.php">
+                        <i class='bx bx-log-out'></i> Logout
+                    </a>
                 </li>
-                <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
-                    <li class="dropdown" id="accountDropdown">
-                        <a href="#" class="user-account" onclick="toggleDropdown(event)">
-                            <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
-                        </a>
-                        <ul class="dropdown-content">
-                            <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
-                                <?php echo htmlspecialchars($_SESSION['email']); ?>
-                            </li>
-                            <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
-                        </ul>
-                    </li>
-                <?php else: ?>
-                    <li>
-                        <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
-                            <i class='bx bx-log-in'></i> Login
-                        </a>
-                    </li>
-                <?php endif; ?>
+            <?php else: ?>
                 <li>
-                    <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+                    <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
+                        <i class='bx bx-log-in'></i> Login
+                    </a>
                 </li>
-                <li>
-                    <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
-                </li>
-                <li>
-                    <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
     <!-- Contact Info Section -->
 <section class="contact-info" aria-labelledby="contact-info-title" style="max-width:1140px; margin:3rem auto; padding:0 1.5rem;">
   <h2 id="contact-info-title" style="font-family: 'Paytone One', sans-serif; font-size: 2.5rem; color: #2c3e50; margin-bottom: 2rem; text-align:center;">
@@ -603,22 +624,5 @@ footer {
             <p>RoamHorizon Travels <br> Copyright @2024 All Rights Reserved</p>
         </div>
     </footer>
-    <!-- JavaScript to toggle dropdown -->
-<script>
-function toggleDropdown(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const dropdown = document.getElementById('accountDropdown');
-    dropdown.classList.toggle('show');
-}
-
-document.addEventListener('click', function (e) {
-    const dropdown = document.getElementById('accountDropdown');
-    if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('show');
-    }
-});
-</script>
 </body>
 </html>

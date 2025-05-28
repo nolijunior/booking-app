@@ -185,7 +185,7 @@
   <div class="admin-container">
     <aside class="sidebar">
       <div class="logo">
-        <h2><i class="fas fa-user-cog"></i> Admin Panel</h2>
+        <h2><i class="fas fa-user-cog"></i> RoamHorizon</h2>
       </div>
       <nav class="menu">
         <a href="dashboard.php" class="menu-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>

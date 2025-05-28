@@ -22,7 +22,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background: url('img/background22.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   color: #2c3e50;
@@ -103,28 +103,56 @@ header {
     width: 100%;
 }
 #menu-icon { display: none; }
-
-.dropdown-content {
+.dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .user-account {
+            background: none;
+            border: none;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            border-radius: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .user-account:hover {
+            color: #e67e22;
+            background: #ffe5c6;
+        }
+        .dropdown-content {
             display: none;
             position: absolute;
             top: 100%;
-            left: 0;
+            right: 0; /* Changed from left to right to match index.php */
             background: rgba(255,255,255,0.98);
             min-width: 180px;
             box-shadow: 0 8px 24px rgba(44,62,80,0.13);
-            z-index: 200;
+            z-index: 1000; /* Increased z-index for consistency */
             border-radius: 0.7rem;
             overflow: hidden;
             margin-top: 0.5rem;
             padding: 0;
         }
         .dropdown.show .dropdown-content {
-            display: block;
+            display: block !important;
+        }
+        .user-account:hover + .dropdown-content,
+        .dropdown-content:hover {
+            display: none;
         }
         .dropdown-content li {
             padding: 0;
             margin: 0;
             text-align: left;
+            list-style: none;
         }
         .dropdown-content li a {
             color: #34495e;
@@ -350,46 +378,40 @@ footer {
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <a href="index.php" class="logo">RoamHorizon</a>
-        <div class="bx bx-menu" id="menu-icon"></div>
-        <nav class="navbar">
-            <ul>
-                <li>
-                    <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
-                </li>
-                <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
-                    <li class="dropdown" id="accountDropdown">
-                        <a href="#" class="user-account" onclick="toggleDropdown(event)">
-                            <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
-                        </a>
-                        <ul class="dropdown-content">
-                            <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
-                                <?php echo htmlspecialchars($_SESSION['email']); ?>
-                            </li>
-                            <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
-                        </ul>
-                    </li>
-                <?php else: ?>
-                    <li>
-                        <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
-                            <i class='bx bx-log-in'></i> Login
-                        </a>
-                    </li>
-                <?php endif; ?>
-                <li>
-                    <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
-                </li>
-                <li>
-                    <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
-                </li>
-                <li>
-                    <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <a href="index.php" class="logo">RoamHorizon</a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
+            </li>
+            <li>
+                <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+            </li>
+            <li>
+                <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
+            </li>
+            <li>
+                <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
+            </li>
 
+            <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
+                <li>
+                    <a href="logout.php">
+                        <i class='bx bx-log-out'></i> Logout
+                    </a>
+                </li>
+            <?php else: ?>
+                <li>
+                    <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
+                        <i class='bx bx-log-in'></i> Login
+                    </a>
+                </li>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
     <!-- About Section -->
     <section class="about" aria-labelledby="about-title">
         <div class="about-heading">
@@ -476,47 +498,5 @@ footer {
             <p>RoamHorizon Travels <br> Copyright @2024 All Rights Reserved</p>
         </div>
     </footer>
-    <script>
-  // Get elements
-  const modal = document.getElementById("imageModal");
-  const thumb = document.getElementById("aboutThumb");
-  const fullImage = document.getElementById("fullImage");
-  const closeBtn = document.getElementsByClassName("close")[0];
-
-  // Open modal on image click
-  thumb.onclick = function() {
-    modal.style.display = "block";
-    fullImage.src = this.src;
-  }
-
-  // Close modal on (x) click
-  closeBtn.onclick = function() {
-    modal.style.display = "none";
-  }
-
-  // Close modal on outside click
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      modal.style.display = "none";
-    }
-  }
-</script>
-<!-- JavaScript to toggle dropdown -->
-<script>
-function toggleDropdown(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const dropdown = document.getElementById('accountDropdown');
-    dropdown.classList.toggle('show');
-}
-
-document.addEventListener('click', function (e) {
-    const dropdown = document.getElementById('accountDropdown');
-    if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('show');
-    }
-});
-</script>
 </body>
 </html>

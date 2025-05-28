@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background: url('img/background22.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             color: #2c3e50;
@@ -24,89 +24,115 @@
             z-index: -1;
         }
         /* Header */
-header {
-    background: rgba(255, 255, 255, 0.92);
-    box-shadow: 0 4px 24px rgba(0,0,0,0.05);
-    padding: 1.5rem 3rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 0 0 1.5rem 1.5rem;
-    backdrop-filter: blur(14px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
-.logo {
-    font-family: 'Paytone One', sans-serif;
-    font-size: 2rem;
-    color: #2c3e50;
-    letter-spacing: 2px;
-    text-decoration: none;
-    transition: color 0.3s;
-    font-weight: 700;
-    user-select: none;
-}
-.logo:hover { color: #e67e22; }
-
-.navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-.navbar ul li a {
-    color: #34495e;
-    font-weight: 600;
-    font-size: 1rem;
-    text-decoration: none;
-    position: relative;
-    transition: color 0.3s;
-    padding-bottom: 0.25rem;
-}
-.navbar ul li a:hover,
-.navbar ul li a[aria-current="page"],
-.navbar ul li.dropdown:hover .dropdown-toggle {
-    color: #e67e22;
-}
-.navbar ul li a::after {
-    content: '';
-    position: absolute;
-    width: 0%;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: #e67e22;
-    transition: width 0.3s;
-}
-.navbar ul li a:hover::after,
-.navbar ul li a[aria-current="page"]::after {
-    width: 100%;
-}
-#menu-icon { display: none; }
-
-.dropdown-content {
+        header {
+            background: rgba(255, 255, 255, 0.92);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 0 0 1.5rem 1.5rem;
+            backdrop-filter: blur(14px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .logo {
+            font-family: 'Paytone One', sans-serif;
+            font-size: 2rem;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 700;
+            user-select: none;
+        }
+        .logo:hover { color: #e67e22; }
+        .navbar ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .navbar ul li a {
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            position: relative;
+            transition: color 0.3s;
+            padding-bottom: 0.25rem;
+        }
+        .navbar ul li a:hover,
+        .navbar ul li a[aria-current="page"],
+        .navbar ul li.dropdown:hover .dropdown-toggle {
+            color: #e67e22;
+        }
+        .navbar ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #e67e22;
+            transition: width 0.3s;
+        }
+        .navbar ul li a:hover::after,
+        .navbar ul li a[aria-current="page"]::after {
+            width: 100%;
+        }
+        #menu-icon { display: none; }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .user-account {
+            background: none;
+            border: none;
+            color: #34495e;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            margin: 0;
+            border-radius: 0.5rem;
+            transition: background 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .user-account:hover {
+            color: #e67e22;
+            background: #ffe5c6;
+        }
+        .dropdown-content {
             display: none;
             position: absolute;
             top: 100%;
-            left: 0;
+            right: 0; /* Changed from left to right to match index.php */
             background: rgba(255,255,255,0.98);
             min-width: 180px;
             box-shadow: 0 8px 24px rgba(44,62,80,0.13);
-            z-index: 200;
+            z-index: 1000; /* Increased z-index for consistency */
             border-radius: 0.7rem;
             overflow: hidden;
             margin-top: 0.5rem;
             padding: 0;
         }
         .dropdown.show .dropdown-content {
-            display: block;
+            display: block !important;
+        }
+        .user-account:hover + .dropdown-content,
+        .dropdown-content:hover {
+            display: none;
         }
         .dropdown-content li {
             padding: 0;
             margin: 0;
             text-align: left;
+            list-style: none;
         }
         .dropdown-content li a {
             color: #34495e;
@@ -121,18 +147,6 @@ header {
             background: #ffe5c6;
             color: #e67e22;
         }
-        .user-account {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            font-weight: 600;
-            color: #34495e;
-        }
-        .user-account i {
-            font-size: 1.1rem;
-        }
-        .navbar ul li a:hover::after, .navbar ul li a[aria-current="page"]::after { width: 100%; }
         .destination-section {
             max-width: 1140px;
             margin: 3rem auto 3rem;
@@ -225,42 +239,42 @@ header {
             .destination-section h2 { font-size: 2rem; }
         }
         /* Footer */
-footer {
-    background: rgba(255, 255, 255, 0.95);
-    padding: 3rem 2rem 2rem;
-    font-size: 0.95rem;
-    color: #34495e;
-    box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
-    border-radius: 1.5rem 1.5rem 0 0;
-    user-select: none;
-}
-.footer .main {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 2rem;
-    max-width: 1140px;
-    margin: 0 auto 2rem;
-}
-.list h4 {
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: #2c3e50;
-    letter-spacing: 1px;
-}
-.list ul {
-    list-style: none;
-    padding-left: 0;
-}
-.list ul li a {
-    color: #34495e;
-    text-decoration: none;
-    display: block;
-    padding: 0.3rem 0;
-    transition: color 0.3s;
-}
-.list ul li a:hover { color: #e67e22; }
-.social a {
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem 2rem 2rem;
+            font-size: 0.95rem;
+            color: #34495e;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
+            border-radius: 1.5rem 1.5rem 0 0;
+            user-select: none;
+        }
+        .footer .main {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1140px;
+            margin: 0 auto 2rem;
+        }
+        .list h4 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            letter-spacing: 1px;
+        }
+        .list ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .list ul li a {
+            color: #34495e;
+            text-decoration: none;
+            display: block;
+            padding: 0.3rem 0;
+            transition: color 0.3s;
+        }
+        .list ul li a:hover { color: #e67e22; }
+        .social a {
             font-size: 1.6rem;
             margin-right: 1.2rem;
             color: #34495e;
@@ -276,55 +290,49 @@ footer {
             margin-right: 1.2rem;
             vertical-align: middle;
         }
-.end-text {
-    text-align: center;
-    font-weight: 300;
-    color: #7f8c8d;
-}
-
+        .end-text {
+            text-align: center;
+            font-weight: 300;
+            color: #7f8c8d;
+        }
     </style>
 </head>
 <body>
-     <!-- Header -->
-    <header>
-        <a href="index.php" class="logo">RoamHorizon</a>
-        <div class="bx bx-menu" id="menu-icon"></div>
-        <nav class="navbar">
-            <ul>
+    <!-- Header -->
+<header>
+    <a href="index.php" class="logo">RoamHorizon</a>
+    <div class="bx bx-menu" id="menu-icon"></div>
+    <nav class="navbar">
+        <ul>
+            <li>
+                <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
+            </li>
+            <li>
+                <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+            </li>
+            <li>
+                <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
+            </li>
+            <li>
+                <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
+            </li>
+
+            <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
                 <li>
-                    <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
+                    <a href="logout.php">
+                        <i class='bx bx-log-out'></i> Logout
+                    </a>
                 </li>
-                <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
-                    <li class="dropdown" id="accountDropdown">
-                        <a href="#" class="user-account" onclick="toggleDropdown(event)">
-                            <i class='bx bx-user'></i> Account <i class='bx bx-chevron-down'></i>
-                        </a>
-                        <ul class="dropdown-content">
-                            <li style="padding: 0.9rem 1.2rem; font-weight: 600; color: #e67e22;">
-                                <?php echo htmlspecialchars($_SESSION['email']); ?>
-                            </li>
-                            <li><a href="logout.php"><i class='bx bx-log-out'></i> Logout</a></li>
-                        </ul>
-                    </li>
-                <?php else: ?>
-                    <li>
-                        <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
-                            <i class='bx bx-log-in'></i> Login
-                        </a>
-                    </li>
-                <?php endif; ?>
+            <?php else: ?>
                 <li>
-                    <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
+                    <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
+                        <i class='bx bx-log-in'></i> Login
+                    </a>
                 </li>
-                <li>
-                    <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
-                </li>
-                <li>
-                    <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
+            <?php endif; ?>
+        </ul>
+    </nav>
+</header>
     <section class="destination-section">
         <h2>Discover Endless Horizons with Unforgettable Escapes!</h2>
         <div class="row-items">
@@ -370,7 +378,7 @@ footer {
             </article>
         </div>
     </section>
-  <!-- Footer -->
+    <!-- Footer -->
     <footer id="contact" aria-labelledby="footer-title">
         <div class="footer">
             <div class="main">
@@ -424,24 +432,5 @@ footer {
             <p>RoamHorizon Travels <br> Copyright @2024 All Rights Reserved</p>
         </div>
     </footer>
-    <!-- Bootstrap 5 JS (for responsiveness, optional) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- JavaScript to toggle dropdown -->
-<script>
-function toggleDropdown(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    const dropdown = document.getElementById('accountDropdown');
-    dropdown.classList.toggle('show');
-}
-
-document.addEventListener('click', function (e) {
-    const dropdown = document.getElementById('accountDropdown');
-    if (!dropdown.contains(e.target)) {
-        dropdown.classList.remove('show');
-    }
-});
-</script>
 </body>
 </html>
