@@ -69,74 +69,119 @@ $stmt->bind_param(
     <title>Payment | RoamHorizon</title>
     <style>
         body {
-            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
-            background-size: cover;
-            font-family: Arial, sans-serif;
-            color: #2c3e50;
-            line-height: 1.7;
-            position: relative;
-            min-height: 100vh;
-            margin: 0;
-        }
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background: rgba(255, 255, 255, 0.18);
-            z-index: -1;
-        }
+    background: url('img/background21.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    color: #2c3e50;
+    line-height: 1.7;
+    position: relative;
+    min-height: 100vh;
+    margin: 0;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.7); /* Semi-transparent white overlay */
+    z-index: -1;
+}
         header {
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 0 0 1rem 1rem;
-            backdrop-filter: blur(14px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo {
-            font-family: 'Arial', sans-serif;
-            font-size: 1.8rem;
-            color: #2c3e50;
-            letter-spacing: 2px;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 700;
-        }
-        .logo:hover { color: #e67e22; }
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0); /* Transparent at top */
+    transition: background 0.3s, padding 0.3s; /* Smooth transition */
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white on scroll */
+    padding: 1rem 3rem; /* Slightly reduced padding for compact look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.logo {
+    font-family: 'Paytone One', sans-serif;
+    font-size: 2rem;
+    color: #2c3e50;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 700;
+    user-select: none;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for readability */
+}
+
+.logo:hover {
+    color: #e67e22;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #34495e;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+    padding-bottom: 0.25rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for readability */
+}
+
+.navbar ul li a:hover,
+.navbar ul li a[aria-current="page"] {
+    color: #e67e22;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #e67e22;
+    transition: width 0.3s;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a[aria-current="page"]::after {
+    width: 100%;
+}
 
         main {
             max-width: 800px;
             margin: 2rem auto;
             padding: 0 1rem;
         }
-        .payment-details {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-            margin-bottom: 2rem;
-        }
-        .payment-details h2 {
-            color: #2c3e50;
-            margin-top: 0;
-        }
-        .amount {
-            font-size: 1.5rem;
-            color: #e67e22;
-            font-weight: 700;
-            margin: 0.5rem 0;
-        }
-        .payment-form {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 1rem;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.05);
-        }
+        .payment-details, .payment-form {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    margin-bottom: 2rem;
+}
+
+.payment-details h2 {
+    color: #2c3e50; 
+    margin-top: 0;
+    font-size: 1.8rem;
+    text-align: center;
+    background: rgba(39, 174, 96, 0.1); 
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
         .form-group {
             margin-bottom: 1.5rem;
         }
@@ -146,43 +191,39 @@ $stmt->bind_param(
             font-weight: 600;
             color: #2c3e50;
         }
-        .form-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 0.8rem;
-            font-size: 1rem;
-            transition: border 0.3s;
-        }
-        .form-group input:focus {
-            border-color: #e67e22;
-            outline: none;
-        }
-        .form-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: flex-start;
-            margin-top: 1rem;
-        }
-        .form-submit {
-            background: linear-gradient(90deg, #e67e22, #f6b93b);
-            color: #fff;
-            border: none;
-            padding: 1rem 2rem;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 2rem;
-            cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(230,126,34,0.13);
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .form-submit:hover {
-            background: linear-gradient(90deg, #f6b93b, #e67e22);
-            transform: translateY(-2px) scale(1.04);
-        }
+       .form-group input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem; /* Slightly rounded corners */
+    font-size: 1rem;
+    transition: border 0.3s;
+}
+.form-buttons {
+    display: flex;
+    gap: 1rem; /* space between buttons */
+    justify-content: center;
+}
+
+.form-btn {
+    background: #e67e22;
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
+    width: 150px; /* Set a fixed width */
+    text-align: center;
+}
+
+.form-btn:hover {
+    background: #e67e22;
+    transform: translateY(-2px) scale(1.04);
+}
     </style>
 </head>
 <body>
@@ -212,10 +253,10 @@ $stmt->bind_param(
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" placeholder="Enter CVV" required>
             </div>
-            <div class="form-buttons">
-                <button type="submit" class="form-submit">Pay Now</button>
-                <a href="destinations.php" class="form-submit">Cancel</a>
-            </div>
+           <div class="form-buttons">
+    <button type="submit" class="form-btn">Pay Now</button>
+    <button type="button" class="form-btn" onclick="window.location.href='destinations.php'">Cancel</button>
+</div>
         </form>
         <script>
             document.querySelector('.payment-form').addEventListener('submit', function(event) {
@@ -225,5 +266,21 @@ $stmt->bind_param(
             });
               </script>
     </main>
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.querySelector('header');
+        const toggleBtn = document.getElementById('dropdownToggle');
+        const dropdown = document.getElementById('accountDropdown');
+
+        // Scroll event to toggle header class
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) { // Trigger after scrolling 50px
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    });
+</script>
 </body>
 </html>

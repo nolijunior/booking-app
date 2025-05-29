@@ -72,7 +72,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+  background: url('img/background22.jpg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   color: #2c3e50;
@@ -93,39 +93,79 @@ body::before {
 
 /* Header */
 header {
-  width: 100%;
-  padding: 1.5rem 3rem;
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  backdrop-filter: saturate(180%) blur(20px);
-  border-radius: 0 0 20px 20px;
-  z-index: 1000;
-  transition: background-color 0.3s ease;
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0); /* Transparent at top */
+    transition: background 0.3s, padding 0.3s; /* Smooth transition */
 }
 
-header:hover {
-  background: rgba(255, 255, 255, 1);
+header.scrolled {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white on scroll */
+    padding: 1rem 3rem; /* Slightly reduced padding for compact look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
 .logo {
-  font-family: 'Paytone One', sans-serif;
-  font-size: 2rem;
-  color: #2c3e50;
-  letter-spacing: 2px;
-  text-decoration: none;
-  user-select: none;
-  transition: color 0.3s ease;
+    font-family: 'Paytone One', sans-serif;
+    font-size: 2rem;
+    color: #2c3e50;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 700;
+    user-select: none;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for readability */
 }
 
 .logo:hover {
-  color: #e67e22;
+    color: #e67e22;
 }
 
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #34495e;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+    padding-bottom: 0.25rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for readability */
+}
+
+.navbar ul li a:hover,
+.navbar ul li a[aria-current="page"] {
+    color: #e67e22;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #e67e22;
+    transition: width 0.3s;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a[aria-current="page"]::after {
+    width: 100%;
+}
 /* Signup Section */
 .signup-section {
   flex-grow: 1;
@@ -355,9 +395,24 @@ footer {
               </script>
     </div>
   </section>
-
   <footer>
     <p>RoamHorizon Travels <br />Copyright ©2024 All Rights Reserved</p>
   </footer>
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.querySelector('header');
+        const toggleBtn = document.getElementById('dropdownToggle');
+        const dropdown = document.getElementById('accountDropdown');
+
+        // Scroll event to toggle header class
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) { // Trigger after scrolling 50px
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    });
+</script>
 </body>
 </html>

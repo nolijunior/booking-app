@@ -38,7 +38,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $price_per_person = floatval($_POST['price'] ?? 0);
     $special_request = trim($_POST['request'] ?? '');
     $total_price = $price_per_person * $number_of_person;
-    //var_dump($_POST,$destinationPost);
     
     header("Location: payment.php?destination=" . $destinationPost . "&travel_date=" . $travel_date . "&number_of_person=".$number_of_person."&special_request=".$special_request."&total_price=".$total_price);
 }
@@ -55,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link href="https://fonts.googleapis.com/css2?family=Paytone+One&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1920&q=80') no-repeat center center fixed;
+            background: url('img/background21.jpg') no-repeat center center fixed;
             background-size: cover;
             font-family: 'Poppins', sans-serif;
             color: #2c3e50;
@@ -68,21 +67,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             content: "";
             position: fixed;
             inset: 0;
-            background: rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.5);
             z-index: -1;
         }
         header {
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 4px 24px rgba(0,0,0,0.05);
             padding: 1.5rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-radius: 0 0 1.5rem 1.5rem;
-            backdrop-filter: blur(14px);
             position: sticky;
             top: 0;
             z-index: 100;
+            background: rgba(255, 255, 255, 0);
+            transition: background 0.3s, padding 0.3s;
+        }
+        header.scrolled {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1rem 3rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         .logo {
             font-family: 'Paytone One', sans-serif;
@@ -94,55 +96,42 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-weight: 700;
         }
         .logo:hover { color: #e67e22; }
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        .navbar ul li a {
-            color: #34495e;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s;
-            padding-bottom: 0.25rem;
-        }
-        .navbar ul li a:hover {
-            color: #e67e22;
-        }
         main {
-            max-width: 800px;
+            max-width: 800px; /* Increased width for larger containers */
             margin: 2rem auto;
             padding: 0 1rem;
         }
         .booking-details {
             background: #fff;
-            padding: 2rem;
-            border-radius: 1rem;
+            padding: 2.5rem; /* Increased padding for larger container */
+            border-radius: 0.8rem; /* Slightly reduced for more rectangular look */
             box-shadow: 0 4px 16px rgba(0,0,0,0.05);
             margin-bottom: 2rem;
+            min-height: 400px; /* Set minimum height for rectangular shape */
         }
         .booking-details h2 {
             color: #2c3e50;
             margin-top: 0;
+            text-align: center;
         }
         .price {
             font-size: 1.5rem;
             color: #e67e22;
             font-weight: 700;
             margin: 0.5rem 0;
+            text-align: center;
         }
         .duration {
             font-size: 1.2rem;
             color: #555f6e;
             margin-bottom: 1rem;
+            text-align: center;
         }
         .description {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #555f6e;
             margin-bottom: 1.5rem;
+            text-align: center;
         }
         .inclusions h3 {
             font-size: 1.2rem;
@@ -170,111 +159,96 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
         .booking-form {
             background: #fff;
-            padding: 2rem;
-            border-radius: 1rem;
+            padding: 2.5rem;
+            border-radius: 0.8rem; /* Slightly reduced for more rectangular look */
             box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+            text-align: center;
+            min-height: 500px; /* Set minimum height for rectangular shape */
+        }
+        .booking-form h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        .booking-form p {
+            color: #555f6e;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
         }
         .form-group {
             margin-bottom: 1.5rem;
+            text-align: left;
         }
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 600;
+            font-weight: 500;
             color: #2c3e50;
         }
         .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
-            border-radius: 0.8rem;
+            border-radius: 0.5rem;
             font-size: 1rem;
-            transition: border 0.3s;
+            color: #2c3e50;
+            background: #f9f9f9;
+        }
+        .form-group input[readonly] {
+            background: #e9ecef;
         }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             border-color: #e67e22;
             outline: none;
         }
-        .form-submit {
-            background: linear-gradient(90deg, #e67e22, #f6b93b);
-            color: #fff;
+        .form-group textarea {
+            resize: vertical;
+        }
+        .form-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        .form-submit, .form-cancel {
+            padding: 0.8rem 2rem;
             border: none;
-            padding: 1rem 2rem;
             font-size: 1.1rem;
             font-weight: 600;
             border-radius: 2rem;
             cursor: pointer;
             transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 4px 15px rgba(230,126,34,0.13);
+        }
+        .form-submit {
+            background: #f28c38;
+            color: #fff;
         }
         .form-submit:hover {
-            background: linear-gradient(90deg, #f6b93b, #e67e22);
-            transform: translateY(-2px) scale(1.04);
+            background: #e67e22;
+            transform: translateY(-2px);
         }
-        footer {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 2rem;
-            font-size: 0.95rem;
-            color: #34495e;
-            box-shadow: 0 -4px 20px rgba(0,0,0,0.07);
-            border-radius: 1.5rem 1.5rem 0 0;
-            margin-top: 3rem;
+        .form-cancel {
+            background: #f28c38;
+            color: #fff;
         }
-        .footer .main {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 2rem;
-            max-width: 1140px;
-            margin: 0 auto;
-        }
-        .list h4 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-            letter-spacing: 1px;
-        }
-        .list ul {
-            list-style: none;
-            padding-left: 0;
-        }
-        .list ul li a {
-            color: #34495e;
-            text-decoration: none;
-            display: block;
-            padding: 0.3rem 0;
-            transition: color 0.3s;
-        }
-        .list ul li a:hover { color: #e67e22; }
-        .social a {
-            font-size: 1.6rem;
-            margin-right: 1.2rem;
-            color: #34495e;
-            transition: color 0.3s, transform 0.3s;
-        }
-        .social a:hover {
-            color: #e67e22;
-            transform: scale(1.15);
-        }
-        .end-text {
-            text-align: center;
-            font-weight: 300;
-            color: #7f8c8d;
+        .form-cancel:hover {
+            background: #e67e22;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
+    <header>
+        <a href="index.php" class="logo">RoamHorizon</a>
+    </header>
     <main>
         <!-- Booking Details -->
         <div class="booking-details">
             <h2>Adventure & Exploration</h2>
-            
             <?php $pricePerPerson = 7999; ?>
             <div class="price">₱<?php echo number_format($pricePerPerson, 2);?> per person</div>
-
             <div class="duration">3 Days, 2 Nights</div>
             <p class="description">
-                Embark on an unforgettable journey with our Adventure & Exploration package. Designed for thrill-seekers and nature lovers, this package offers heart-pumping activities and breathtaking landscapes. Experience the excitement of outdoor adventures, guided expeditions, and the beauty of untouched nature.
+                Embark on an unforgettable journey with our Adventure & Exploration package. Designed for thrill-seekers and nature lovers, this package offers heart-pumping activities and breathtaking landscapes.
             </p>
             <div class="inclusions">
                 <h3>Package Inclusions:</h3>
@@ -292,39 +266,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
 
         <!-- Booking Form -->
-       <form class="booking-form" action="adventure_booking.php?destination=<?php echo urlencode($destination); ?>" method="POST">
-    <div class="form-group">
-        <label for="name">Full Name</label>
-        <input type="text" value="<?php echo htmlspecialchars($full_name); ?>" readonly class="readonly" disabled>
-    </div>
-    <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" value="<?php echo htmlspecialchars($email); ?>" readonly class="readonly" disabled>
-    </div>
-     <div class="form-group">
-      <label for="destination">Destination</label>
-        <input type="text" value="<?php echo htmlspecialchars($destination); ?>" readonly class="readonly" disabled>
-    </div>
-    <div class="form-group">
-        <label for="date">Preferred Travel Date</label>
-        <input type="date" id="date" name="date" required>
-    </div>
-    <div class="form-group">
-        <label for="persons">Number of Persons</label>
-        <input type="number" id="persons" name="persons" min="1" placeholder="How many people?" required>
-    </div>
-    <div class="form-group">
-        <label for="notes">Special Requests</label>
-        <textarea id="request" name="request" placeholder="Any special requests or notes (e.g., dietary restrictions, allergies, etc.)"></textarea>
-    </div>
-    <button type="submit" class="form-submit">Book</button>
-        <input type="hidden" name="price" value="<?php echo $pricePerPerson?>">
-     <script>
-        document.getElementById('bookingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            window.location.href = 'payment.php';
+        <form class="booking-form" action="adventure_booking.php?destination=<?php echo urlencode($destination); ?>" method="POST">
+            <h3>Book Your Adventure</h3>
+            <p>Please fill in the details to confirm your booking.</p>
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" value="<?php echo htmlspecialchars($full_name); ?>" readonly>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" value="<?php echo htmlspecialchars($email); ?>" readonly>
+            </div>
+            <div class="form-group">
+                <label for="destination">Destination</label>
+                <input type="text" value="<?php echo htmlspecialchars($destination); ?>" readonly>
+            </div>
+            <div class="form-group">
+                <label for="date">Preferred Travel Date</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="persons">Number of Persons</label>
+                <input type="number" id="persons" name="persons" min="1" placeholder="How many people?" required>
+            </div>
+            <div class="form-group">
+                <label for="request">Special Requests</label>
+                <textarea id="request" name="request" placeholder="Any special requests or notes (e.g., dietary restrictions, allergies, etc.)"></textarea>
+            </div>
+            <div class="form-buttons">
+                <button type="submit" class="form-submit">Book Now</button>
+            </div>
+            <input type="hidden" name="price" value="<?php echo $pricePerPerson?>">
+        </form>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
         });
     </script>
-</form>
-    </body>
-    </html>
+</body>
+</html>

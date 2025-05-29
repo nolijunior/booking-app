@@ -18,7 +18,7 @@
         }
         body {
             font-family: 'Poppins', sans-serif;
-            background: url('img/background16.jpg') no-repeat center center fixed;
+            background: url('img/background22.jpg') no-repeat center center fixed;
             background-size: cover;
             min-height: 100vh;
             color: #2c3e50;
@@ -35,139 +35,135 @@
             background: rgba(255, 255, 255, 0.18);
             z-index: -1;
         }
-        header {
-            background: rgba(255, 255, 255, 0.92);
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-radius: 0 0 1.5rem 1.5rem;
-            backdrop-filter: blur(14px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo {
-            font-family: 'Paytone One', sans-serif;
-            font-size: 2rem;
-            color: #2c3e50;
-            letter-spacing: 2px;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 700;
-            user-select: none;
-        }
-        .logo:hover {
-            color: #e67e22;
-        }
-        .navbar ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar ul li {
-            position: relative;
-            margin: 0;
-            padding: 0;
-        }
-        .navbar ul li a {
-            color: #34495e;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            position: relative;
-            transition: color 0.3s;
-            padding-bottom: 0.25rem;
-        }
-        .navbar ul li a:hover,
-        .navbar ul li a[aria-current="page"] {
-            color: #e67e22;
-        }
-        .navbar ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0%;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: #e67e22;
-            transition: width 0.3s;
-        }
-        .navbar ul li a:hover::after,
-        .navbar ul li a[aria-current="page"]::after {
-            width: 100%;
-        }
+       header {
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0); /* Transparent at top */
+    transition: background 0.3s, padding 0.3s; /* Smooth transition */
+}
+
+header.scrolled {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white on scroll */
+    padding: 1rem 3rem; /* Slightly reduced padding for compact look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.logo {
+    font-family: 'Paytone One', sans-serif;
+    font-size: 2rem;
+    color: #2c3e50;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 700;
+    user-select: none;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for readability */
+}
+
+.logo:hover {
+    color: #e67e22;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #34495e;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+    padding-bottom: 0.25rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for readability */
+}
+
+.navbar ul li a:hover,
+.navbar ul li a[aria-current="page"] {
+    color: #e67e22;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #e67e22;
+    transition: width 0.3s;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a[aria-current="page"]::after {
+    width: 100%;
+}
         #menu-icon {
             display: none;
         }
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .user-account {
-            background: none;
-            border: none;
-            color: #34495e;
-            font-weight: 600;
-            font-size: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            padding: 0.5rem 1rem;
-            margin: 0;
-            border-radius: 0.5rem;
-            transition: background 0.2s, color 0.2s;
-        }
-        .user-account:hover {
-            color: #e67e22;
-            background: #ffe5c6;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            min-width: 180px;
-            box-shadow: 0 8px 24px rgba(44, 62, 80, 0.13);
-            z-index: 200;
-            border-radius: 0.7rem;
-            overflow: hidden;
-            margin-top: 0.5rem;
-            padding: 0;
-        }
-        .dropdown.show .dropdown-content {
-            display: block !important;
-        }
-        .user-account:hover + .dropdown-content,
-        .dropdown-content:hover {
-            display: none;
-        }
-        .dropdown-content li {
-            padding: 0;
-            margin: 0;
-            text-align: left;
-            list-style: none;
-        }
-        .dropdown-content li a {
-            color: #34495e;
-            padding: 0.9rem 1.2rem;
-            text-decoration: none;
-            display: block;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: background 0.2s, color 0.2s;
-        }
-        .dropdown-content li a:hover {
-            background: #ffe5c6;
-            color: #e67e22;
-        }
+       .user-account {
+    background: #e67e22;
+    border: none;
+    font-weight: 600;
+    font-size: 1rem;
+    color: white;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    transition: background 0.3s;
+}
+
+.user-account:hover {
+    background: #d86c1a;
+}
+.dropdown {
+    position: relative;
+}
+.dropdown-content {
+    display: none !important; /* Enforce hiding */ 
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(255, 255, 255, 0.95); /* Match header background */
+    min-width: 180px;
+    border-radius: 8px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+.dropdown-content li.email-display {
+    font-weight: bold;
+    padding: 12px 16px;
+    background-color: #f9f9f9;
+}
+.dropdown-content li a {
+    display: block;
+    padding: 12px 16px;
+    color: #34495e;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.dropdown-content li a:hover {
+    background: #f5f5f5;
+}
+.dropdown.show .dropdown-content {
+    display: block !important; /* Enforce showing when .show is applied */
+}
         .home {
             padding: 7rem 2rem 5rem;
             text-align: center;
@@ -303,37 +299,31 @@
     </style>
 </head>
 <body>
-<!-- Header -->
 <header>
     <a href="index.php" class="logo">RoamHorizon</a>
     <div class="bx bx-menu" id="menu-icon"></div>
     <nav class="navbar">
         <ul>
-            <li>
-                <a href="index.php" <?php if (basename($_SERVER['PHP_SELF']) == 'index.php') echo 'aria-current="page"'; ?>>Home</a>
-            </li>
-            <li>
-                <a href="destinations.php" <?php if (basename($_SERVER['PHP_SELF']) == 'destinations.php') echo 'aria-current="page"'; ?>>Destinations</a>
-            </li>
-            <li>
-                <a href="about_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'about_us.php') echo 'aria-current="page"'; ?>>About</a>
-            </li>
-            <li>
-                <a href="contact_us.php" <?php if (basename($_SERVER['PHP_SELF']) == 'contact_us.php') echo 'aria-current="page"'; ?>>Contact Us</a>
-            </li>
+            <li><a href="index.php" <?= basename($_SERVER['PHP_SELF']) == 'index.php' ? 'aria-current="page"' : '' ?>>Home</a></li>
+            <li><a href="destinations.php" <?= basename($_SERVER['PHP_SELF']) == 'destinations.php' ? 'aria-current="page"' : '' ?>>Destinations</a></li>
+            <li><a href="about_us.php" <?= basename($_SERVER['PHP_SELF']) == 'about_us.php' ? 'aria-current="page"' : '' ?>>About</a></li>
+            <li><a href="contact_us.php" <?= basename($_SERVER['PHP_SELF']) == 'contact_us.php' ? 'aria-current="page"' : '' ?>>Contact Us</a></li>
 
-            <?php if (isset($_SESSION['email']) && ($_SESSION['email'] !== 'admin@admin.com')): ?>
-                <li>
-                    <a href="logout.php">
-                        <i class='bx bx-log-out'></i> Logout
-                    </a>
+            <?php if (isset($_SESSION['email']) && $_SESSION['email'] !== 'admin@admin.com'): ?>
+                <li class="dropdown" id="accountDropdown">
+                    <button class="user-account" id="dropdownToggle">
+                        <?php 
+                        $userName = isset($_SESSION['name']) ? $_SESSION['name'] : explode('@', $_SESSION['email'])[0];
+                        echo strtoupper(substr($userName, 0, 1)); // First letter of name
+                        ?>
+                    </button>
+                    <ul class="dropdown-content" id="dropdownMenu">
+                        <li class="email-display"><?= htmlspecialchars($_SESSION['email']) ?></li>
+                        <li><a href="logout.php">Sign Out</a></li>
+                    </ul>
                 </li>
             <?php else: ?>
-                <li>
-                    <a href="login.php" <?php if (basename($_SERVER['PHP_SELF']) == 'login.php') echo 'aria-current="page"'; ?>>
-                        <i class='bx bx-log-in'></i> Login
-                    </a>
-                </li>
+                <li><a href="login.php">Sign In</a></li>
             <?php endif; ?>
         </ul>
     </nav>
@@ -387,7 +377,7 @@
                             <img src="img/logo-instagram.svg" alt="Instagram">
                         </a>
                         <a href="#" aria-label="Twitter">
-                            <img src="img/logo-twitter.svg" alt="Twitter">
+                            <img src="img/logo-x.svg" alt="Twitter">
                         </a>
                         <a href="#" aria-label="LinkedIn">
                             <img src="img/logo-linkedin.svg" alt="LinkedIn">
@@ -400,35 +390,44 @@
             <p>RoamHorizon Travels <br> Copyright @2024 All Rights Reserved</p>
         </div>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const dropdown = document.getElementById('accountDropdown');
-            if (dropdown) {
-                dropdown.classList.remove('show');
-                console.log('Dropdown state reset on load');
-            }
-        });
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const toggleBtn = document.getElementById('dropdownToggle');
+        const dropdown = document.getElementById('accountDropdown');
 
-        function toggleDropdown(event) {
-            event.preventDefault();
-            event.stopPropagation();
-            const dropdown = document.getElementById('accountDropdown');
-            if (dropdown) {
-                console.log('Toggling dropdown');
+        if (toggleBtn && dropdown) {
+            // Ensure dropdown is hidden on page load
+            dropdown.classList.remove('show');
+
+            toggleBtn.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
                 dropdown.classList.toggle('show');
-            }
-        }
+            });
 
-        document.addEventListener('click', function (e) {
-            const dropdown = document.getElementById('accountDropdown');
-            const userAccountButton = dropdown ? dropdown.querySelector('.user-account') : null;
-            if (dropdown && userAccountButton) {
+            document.addEventListener('click', function (e) {
                 if (!dropdown.contains(e.target)) {
                     dropdown.classList.remove('show');
-                    console.log('Dropdown closed by outside click');
                 }
+            });
+        }
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.querySelector('header');
+        const toggleBtn = document.getElementById('dropdownToggle');
+        const dropdown = document.getElementById('accountDropdown');
+
+        // Scroll event to toggle header class
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) { // Trigger after scrolling 50px
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
-    </script>
+    });
+</script>
 </body>
 </html>

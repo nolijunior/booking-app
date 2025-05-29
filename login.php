@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Poppins', sans-serif;
-      background: url('img/background16.jpg') no-repeat center center fixed;
+      background: url('img/background22.jpg') no-repeat center center fixed;
       background-size: cover;
       min-height: 100vh;
       color: #2c3e50;
@@ -69,59 +69,80 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       background: rgba(255, 255, 255, 0.18);
       z-index: -1;
     }
-    header {
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
-      padding: 1.5rem 3rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-radius: 0 0 1.5rem 1.5rem;
-      backdrop-filter: blur(14px);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .logo {
-      font-family: 'Paytone One', sans-serif;
-      font-size: 2rem;
-      color: #2c3e50;
-      letter-spacing: 2px;
-      text-decoration: none;
-      font-weight: 700;
-    }
-    .navbar ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    .navbar ul li a {
-      color: #34495e;
-      font-weight: 600;
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 0.25rem;
-    }
-    .navbar ul li a:hover,
-    .navbar ul li a[aria-current="page"] {
-      color: #e67e22;
-    }
-    .navbar ul li a::after {
-      content: '';
-      position: absolute;
-      width: 0%;
-      height: 2px;
-      bottom: 0;
-      left: 0;
-      background-color: #e67e22;
-      transition: width 0.3s;
-    }
-    .navbar ul li a:hover::after,
-    .navbar ul li a[aria-current="page"]::after {
-      width: 100%;
-    }
+   header {
+    padding: 1.5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0); /* Transparent at top */
+    transition: background 0.3s, padding 0.3s; /* Smooth transition */
+}
 
+header.scrolled {
+    background: rgba(255, 255, 255, 0.9); /* Semi-transparent white on scroll */
+    padding: 1rem 3rem; /* Slightly reduced padding for compact look */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.logo {
+    font-family: 'Paytone One', sans-serif;
+    font-size: 2rem;
+    color: #2c3e50;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: color 0.3s;
+    font-weight: 700;
+    user-select: none;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for readability */
+}
+
+.logo:hover {
+    color: #e67e22;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar ul li a {
+    color: #34495e;
+    font-weight: 600;
+    font-size: 1rem;
+    text-decoration: none;
+    position: relative;
+    transition: color 0.3s;
+    padding-bottom: 0.25rem;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); /* Shadow for readability */
+}
+
+.navbar ul li a:hover,
+.navbar ul li a[aria-current="page"] {
+    color: #e67e22;
+}
+
+.navbar ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #e67e22;
+    transition: width 0.3s;
+}
+
+.navbar ul li a:hover::after,
+.navbar ul li a[aria-current="page"]::after {
+    width: 100%;
+}
     .login {
       flex-grow: 1;
       display: flex;
@@ -203,6 +224,40 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       0% { opacity: 0; transform: scale(0.85); }
       100% { opacity: 1; transform: scale(1); }
     }
+    footer {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2rem 1.5rem;
+  font-size: 0.9rem;
+  color: #34495e;
+  box-shadow: 0 -4px 15px rgba(0,0,0,0.05);
+  border-radius: 20px 20px 0 0;
+  text-align: center;
+  user-select: none;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .signup-container {
+    padding: 2rem 2rem;
+    margin: 0 1rem;
+  }
+
+  header {
+    padding: 1rem 2rem;
+  }
+}
   </style>
 </head>
 <body>
@@ -230,5 +285,24 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <p class="signup-prompt">Don't have an account? <a href="signup.php">Sign up</a></p>
     </div>
   </section>
+  <footer>
+    <p>RoamHorizon Travels <br />Copyright ©2024 All Rights Reserved</p>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const header = document.querySelector('header');
+        const toggleBtn = document.getElementById('dropdownToggle');
+        const dropdown = document.getElementById('accountDropdown');
+
+        // Scroll event to toggle header class
+        window.addEventListener('scroll', function () {
+            if (window.scrollY > 50) { // Trigger after scrolling 50px
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    });
+</script>
 </body>
 </html>
